@@ -1,5 +1,4 @@
 #include"System.h"
-//helooooooooooo
 int Dangnhap() {
 	system("cls");
 	int Chon;
@@ -265,10 +264,10 @@ void xemDanhsachLop(fstream& f) {
 		if (Chon == 2) return;
 	}
 }
-//void setupThoigian(int &d, int &m) {
-//	cout << "Ngay :"; cin >> d;
-//	cout << "Ngay :"; cin >> m;
-//}
+void setupThoigian(int &d, int &m) {
+	cout << "Ngay :"; cin >> d;
+	cout << "Ngay :"; cin >> m;
+}
 void addKH(char HK[]) {
 	system("cls");
 	fstream f;
@@ -569,7 +568,7 @@ void them1SV(fstream& f) {
 	}
 }
 void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
-	/*int d = 0, m = 0;*/
+	int d = 0, m = 0;
 	while (1) {
 		system("cls");
 		cout << "1. Thong tin ca nhan" << endl;
@@ -589,11 +588,11 @@ void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
 		case 1:ThongtinGiangvien(f, TK, STT); break;
 		case 2:doiMK(f, TK, STT, soGV); break;
 		case 3: {
-		/*	if (d != 1 && m != 9) {
+			if (d != 1 && m != 9) {
 				cout << "Chi co the tao hoc ky vao dau nam (ngay 1 thang 9)" << endl;
 				system("pause");
 				continue;
-			}*/
+			}
 			taoNam(f, TK);
 			break; 
 		}
@@ -602,15 +601,15 @@ void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
 			break;
 		}
 		case 5: {
-			/*if (d != 1 && m != 9) {
+			if (d != 1 && m != 9) {
 				cout << "Chi co the tao hoc ky vao dau nam (ngay 1 thang 9)" << endl;
 				system("pause");
 				continue;
-			}*/
+			}
 			taoHK(f); break; 
 		}
 		case 6:xemDanhsachLop(f); break;
-		/*case 7 : setupThoigian(d, m); break;*/
+		case 7 : setupThoigian(d, m); break;
 		default: return;
 		}
 	}
