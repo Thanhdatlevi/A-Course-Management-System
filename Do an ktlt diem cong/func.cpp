@@ -513,7 +513,6 @@ void delete1SV(char HK[]) {
 			cin.getline(temp1, 50);
 			f.open(KHoc[i].TenKH, ios::out);
 			for (int j = 0; j < dem; j++) {
-				cout << temp1 << "  " << sv[j].MSSV << endl;
 				if (strcmp(temp1, sv[j].MSSV) == 0) {
 					j++;
 					for (; j < dem; j++) {
@@ -526,6 +525,53 @@ void delete1SV(char HK[]) {
 			f.close();
 		}
 	}
+}
+void delete1Course(char HK[]) {
+	system("cls");
+	fstream f;
+	int dem = 0;
+	f.open(HK, ios::in);
+	demDong(f, dem);
+	f.close();
+	KhoaHoc* KHoc = new KhoaHoc[dem];
+	f.open(HK, ios::in);
+	for (int i = 0; i < dem; i++) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
+		f.getline(KHoc[i].id, 10, ',');
+		f.getline(KHoc[i].TenKH, 30, ',');
+		f.getline(KHoc[i].TenLop, 30, ',');
+		f.getline(KHoc[i].TenGV, 50, ',');
+		f.getline(KHoc[i].STC, 5, ',');
+		f.getline(KHoc[i].MaxSV, 4, ',');
+		f.getline(KHoc[i].Thu, 4, ',');
+		f.getline(KHoc[i].ses, 3, '\n');
+		cout << KHoc[i].id << "  " << KHoc[i].TenKH << "  " << KHoc[i].TenLop << "  " << KHoc[i].TenGV << "  " << KHoc[i].STC << "  " << KHoc[i].MaxSV << "  " << KHoc[i].Thu << "  " << KHoc[i].ses;
+		cout << endl;
+	}
+	f.close();
+	cout << "Nhap id khoa hoc can xoa : ";
+	char temp[50];
+	cin.ignore();
+	cin.getline(temp, 50);
+	f.open(HK, ios::out);
+	for (int i = 0; i < dem; i++) {
+		if (strcmp(temp, KHoc[i].id) == 0) {
+			strcat_s(KHoc[i].TenKH, "-");
+			strcat_s(KHoc[i].TenKH, KHoc[i].id);
+			strcat_s(KHoc[i].TenKH, ".csv");
+		}
+		remove(KHoc[i].TenKH);
+	}
+	for (int i = 0; i < dem; i++) {
+		if (strcmp(temp, KHoc[i].id) == 0) {
+			i++;
+			for (; i < dem; i++) {
+				f << KHoc[i].id << "," << KHoc[i].TenKH << "," << KHoc[i].TenLop << "," << KHoc[i].TenGV << "," << KHoc[i].STC << "," << KHoc[i].MaxSV << "," << KHoc[i].Thu << "," << KHoc[i].ses << endl;
+			}
+			return;
+		}
+		f << KHoc[i].id << "," << KHoc[i].TenKH << "," << KHoc[i].TenLop << "," << KHoc[i].TenGV << "," << KHoc[i].STC << "," << KHoc[i].MaxSV << "," << KHoc[i].Thu << "," << KHoc[i].ses << endl;
+	}
+	f.close();
 }
 void taoHK(fstream& f) {// TAO HOC KI
 	while (1) {
@@ -613,13 +659,15 @@ void taoHK(fstream& f) {// TAO HOC KI
 				cout << "1. Xem danh sach khoa hoc"<<endl;
 				cout << "2. Cap nhap danh sach"<<endl;
 				cout << "3. Them 1 sinh vien vao khoa hoc" << endl;
-				cout << "4. Xoa 1 sinh vien khoi khoa hco" << endl;
+				cout << "4. Xoa 1 sinh vien khoi khoa hoc" << endl;
+				cout << "5. Xoa 1 khoa hoc" << endl;
 				int Chon;
 				cout << "Nhap : "; cin >> Chon;
 				if (Chon==1) listKH(hk.Nam);
 				if (Chon == 2) updateKH(hk.Nam);
 				if (Chon == 3) add1SV(hk.Nam);
 				if (Chon == 4) delete1SV(hk.Nam);
+				if (Chon == 5) delete1Course(hk.Nam);
 				system("pause");
 			}
 		}
