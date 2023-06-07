@@ -1,7 +1,8 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-#include<cstdlib>;
+#include<cstdlib>
+#include<direct.h>
 using namespace std;
 
 typedef struct GV {

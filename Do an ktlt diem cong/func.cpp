@@ -99,12 +99,19 @@ void tao1nam(fstream& f) {// TAO MOT NAM HOC
 	f << k << "," << nam.Tennam<<"," << nam.ngayBD << "," << nam.thangBD << "," << nam.namBD << "," << nam.ngayKT << "," << nam.thangKT << "," << nam.namKT << endl;
 	f.close();
 	char temp1[20];
-	strcpy_s(temp1, nam.Tennam);// TAO FILE CHUA CAC HOC KI TRONG NAM HOC
+	_mkdir(nam.Tennam);
+	strcpy_s(temp1, nam.Tennam);
+	strcat_s(temp1, "\\");
+	strcat_s(temp1, nam.Tennam);// TAO FILE CHUA CAC HOC KI TRONG NAM HOC
 	strcat_s(temp1, "_HK.csv");
 	f.open(temp1, ios::out);
 	f.close();
-	strcat_s(nam.Tennam, ".csv");// TAO FILE CHUA DANH SACH CAC LOP TRONG NAM
-	f.open(nam.Tennam, ios::out);
+
+	strcpy_s(temp1, nam.Tennam);
+	strcat_s(temp1, "\\");
+	strcat_s(temp1, nam.Tennam);
+	strcat_s(temp1, ".csv");// TAO FILE CHUA DANH SACH CAC LOP TRONG NAM
+	f.open(temp1, ios::out);
 	f.close();
 	cout << "Hoc ky da duoc tao" << endl;
 	cout << "An Enter de quay lai" << endl;
@@ -763,6 +770,8 @@ void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
 	int d = 0, m = 0;
 	while (1) {
 		system("cls");// MENU CHINH
+		cout << "Vui long nhap thoi gian hientai : " << endl;
+		cout << "Ngay :";
 		cout << "1. Thong tin ca nhan" << endl;
 		cout << "2. Doi mat khau" << endl;
 		cout << "3. Tao nam hoc" << endl;
