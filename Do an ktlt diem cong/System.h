@@ -50,7 +50,7 @@ typedef struct HK {
 
 typedef struct KhoaHoc {
 	char id[10];
-	char TenKH[30];
+	char TenKH[100];
 	char TenLop[30];
 	char TenGV[50];
 	char STC[5];
