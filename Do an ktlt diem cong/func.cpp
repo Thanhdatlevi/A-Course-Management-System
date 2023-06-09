@@ -16,6 +16,14 @@ int Dangnhap() {// CHON DANG NHAP VAO TAI KHOAN SINH VIEN HAY TAI KHOAN GIAO VIE
 	if (Chon == 2) return 2;
 	else return 3;
 }
+void demDong(fstream& f, int& dem) {
+	while (!f.eof()) {
+		char temp[100];
+		f.getline(temp, 100, '\n');
+		dem++;
+	}
+	dem--;
+}
 void ThongtinGiangvien(fstream &f,char TK[],int STT ) {// IN RA THONG TIN KHI CHON XEM THONG TIN
 	GV *Ten = new GV[STT];
 	f.open("admin.csv", ios::in);
@@ -70,7 +78,7 @@ void doiMK(fstream& f, char TK[], int STT,int soGV) {
 void tao1nam(fstream& f) {// TAO MOT NAM HOC
 	Nam nam,nam1;
 	fstream f1;
-	cout << "Nhap vao nieen khoa (xx-xx) : ";
+	cout << "Nhap vao nien khoa (xx-xx) : ";
 	cin.ignore();
 	cin.getline(nam.Tennam, 20);
 	cout << "Nhap thoi gian bat dau : ";
@@ -98,16 +106,23 @@ void tao1nam(fstream& f) {// TAO MOT NAM HOC
 	f.open("Namhoc.csv", ios::app);// THEM VAO CUOI FILE HOC KI VUA DUOC TAO
 	f << k << "," << nam.Tennam<<"," << nam.ngayBD << "," << nam.thangBD << "," << nam.namBD << "," << nam.ngayKT << "," << nam.thangKT << "," << nam.namKT << endl;
 	f.close();
-	char temp1[20];
+	char temp1[50];
 	_mkdir(nam.Tennam);
 	strcpy_s(temp1, nam.Tennam);
 	strcat_s(temp1, "\\");
-	strcat_s(temp1, nam.Tennam);// TAO FILE CHUA CAC HOC KI TRONG NAM HOC
-	strcat_s(temp1, "_HK.csv");
+	strcat_s(temp1, nam.Tennam);
+	strcat_s(temp1, "_HK");
+	_mkdir(temp1);
+	strcat_s(temp1, "\\");
+	strcat_s(temp1, nam.Tennam);
+	strcat_s(temp1, "_HK");
+	strcat_s(temp1, ".csv");// TAO FILE CHUA CAC HOC KI TRONG NAM HOC
 	f.open(temp1, ios::out);
 	f.close();
-
 	strcpy_s(temp1, nam.Tennam);
+	strcat_s(temp1, "\\");
+	strcat_s(temp1, nam.Tennam);
+	_mkdir(temp1);
 	strcat_s(temp1, "\\");
 	strcat_s(temp1, nam.Tennam);
 	strcat_s(temp1, ".csv");// TAO FILE CHUA DANH SACH CAC LOP TRONG NAM
@@ -116,14 +131,6 @@ void tao1nam(fstream& f) {// TAO MOT NAM HOC
 	cout << "Hoc ky da duoc tao" << endl;
 	cout << "An Enter de quay lai" << endl;
 	system("pause");
-}
-void demDong(fstream &f, int& dem) {
-	while (!f.eof()) {
-		char temp[100];
-		f.getline(temp, 100, '\n');
-		dem++;
-	}
-	dem--;
 }
 void themLop(fstream& f) {
 	char newclass[10];
@@ -148,19 +155,28 @@ void themLop(fstream& f) {
 	cout << "Chon nam de them lop : ";
 	cin >> temp;
 	int dem1 = 0;
+	char temp1[50];
 	for (int i = 0; i < dem; i++) {// THEM LOP HOC VAO
 		k = stoi(nam[i].STT);
 		if (temp == k) {
-			strcat_s(nam[i].Tennam, ".csv");
-			f.open(nam[i].Tennam, ios::in);
-			while (!f.eof()) {
-				char temp1[50];
-				f.getline(temp1, 50, '\n');
-				dem1++;
-			}
-			dem1--;
+			strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
+			strcat_s(temp1, "\\");
+			strcat_s(temp1, nam[i].Tennam);
+			strcat_s(temp1, "\\");
+			strcat_s(temp1, newclass);
+			strcat_s(temp1, ".csv");
+			f.open(temp1, ios::out);
 			f.close();
-			f.open(nam[i].Tennam, ios::app);
+			strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
+			strcat_s(temp1, "\\");
+			strcat_s(temp1, nam[i].Tennam);
+			strcat_s(temp1, "\\");
+			strcat_s(temp1, nam[i].Tennam);
+			strcat_s(temp1, ".csv");
+			f.open(temp1, ios::in);
+			demDong(f, dem);
+			f.close();
+			f.open(temp1, ios::app);
 			break;
 		}
 	}
@@ -168,19 +184,120 @@ void themLop(fstream& f) {
 	f.close();
 	system("pause");
 }
+void them1SV(fstream& f) {// THEM SINH VIEN VAO LOP HOC CO TRUOC DO
+	system("cls");
+	int dem = 0;
+	DSSV sv1;
+	cin.ignore();
+	cout << "Nhap thong tin sinh vien can them vao : " << endl;
+	cout << "Nhap ma so sinh vien : ";
+	cin.getline(sv1.MSSV, 15);
+	cout << "Nhap ten sinh vien : ";
+	cin.getline(sv1.Ten, 20);
+	cout << "Nhap ho va ten dem sinh vien : ";
+	cin.getline(sv1.Ho, 20);
+	cout << "Nhap gioi tinh sinh vien : ";
+	cin.getline(sv1.Gioitinh, 5);
+	cout << "Nhap ngay sinh sinh vien : ";
+	cin.getline(sv1.Ngaysinh, 20);
+	cout << "Nhap id xa hoi sinh vien : ";
+	cin.getline(sv1.idXH, 20);
+	f.open("Namhoc.csv", ios::in);
+	demDong(f, dem);
+	f.close();
+	Nam* nam = new Nam[dem];
+	f.open("Namhoc.csv", ios::in);// CHON NAM HOC DE THEM VAO
+	for (int i = 0; i < dem; i++) {
+		f.getline(nam[i].STT, 3, ',');
+		f.getline(nam[i].Tennam, 15, ',');
+		char a[100];
+		f.getline(a, 100, '\n');
+		cout << nam[i].STT << ". " << nam[i].Tennam << endl;
+	}
+	f.close();
+	int Chon;
+	cout << "Chon nam hoc : " << endl;
+	cin >> Chon;
+	char temp1[50];
+	for (int i = 0; i < dem; i++) {
+		if (stoi(nam[i].STT) == Chon) {
+			strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
+			strcat_s(temp1, "\\");
+			strcat_s(temp1, nam[i].Tennam);
+			strcat_s(temp1, "\\");
+			strcat_s(temp1, nam[i].Tennam);
+			strcat_s(temp1, ".csv");
+			f.open(temp1, ios::in);
+			dem = 0;
+			demDong(f, dem);
+			f.close();
+			f.open(temp1, ios::in);
+			Lop* lop = new Lop[dem];
+			for (int j = 0; j < dem; j++) {// CHON LOP HOC TRONG NAM HOC DA CHON TRUOC DO DE THEM VAO
+				f.getline(lop[j].STT, 3, ',');
+				f.getline(lop[j].TenLop, 20, '\n');
+				cout << lop[j].STT << ". " << lop[j].TenLop << endl;
+			}
+			f.close();
+			cin.ignore();
+			cout << "Chon lop de coi danh sach : " << endl;
+			cin >> Chon;
+			for (int j = 0; j < dem; j++) {
+				if (stoi(lop[j].STT) == Chon) {
+					strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
+					strcat_s(temp1, "\\");
+					strcat_s(temp1, nam[i].Tennam);
+					strcat_s(temp1, "\\");
+					strcat_s(temp1, lop[j].TenLop);
+					strcat_s(temp1, ".csv");
+					f.open(temp1, ios::in);
+					dem = 0;
+					demDong(f, dem);
+					f.close();
+					DSSV* sv = new DSSV[dem];
+					f.open(temp1, ios::in);
+					int k=0;
+					for (; k < dem; k++) {
+						f.getline(sv[k].STT, 3, ',');
+						f.getline(sv[k].MSSV, 15, ',');
+						f.getline(sv[k].Ten, 20, ',');
+						f.getline(sv[k].Ho, 20, ',');
+						f.getline(sv[k].Gioitinh, 5, ',');
+						f.getline(sv[k].Ngaysinh, 20, ',');
+						f.getline(sv[k].idXH, 20, '\n');
+					}
+					f.close();
+					f.open(temp1, ios::out);
+					k = 0;
+					for (; k < dem; k++) {
+						f << sv[k].STT << "," << sv[k].MSSV << "," << sv[k].Ten << "," << sv[k].Ho << "," << sv[k].Gioitinh << "," << sv[k].Ngaysinh << "," << sv[k].idXH << endl;
+					}
+					f << dem + 1 << "," << sv1.MSSV << "," << sv1.Ten << "," << sv1.Ho << "," << sv1.Gioitinh << "," << sv1.Ngaysinh << "," << sv1.idXH << endl;
+					f.close();
+					break;
+				}
+			}
+			break;
+		}
+	}
+}
 void taoNam(fstream& f, char TK[]) {// TAO NAM HOC DUNG DE TAO MOT NAM HOC MOI HOAC THEM MOT LOP VAO NAM HOC DA CO
 	while (1) {
 		system("cls");
 		cout << "1. Tao 1 nam" << endl;
 		cout << "2. Them lop vao 1 nam hoc" << endl;
-		cout << "3. Thoat" << endl;
+		cout << "3. Them 1 hoc sinh vao lop" << endl;
+		cout << "4. Them danh sach co san vao mot lop" << endl;
+		cout << "5. Thoat" << endl;
 		int Chon;
 		cout << "Nhap : "; cin >> Chon;
-		while (Chon != 1 && Chon != 2&&Chon!=3) {
+		while (Chon <1||Chon>5) {
 			cout << "Nhap lai : "; cin >> Chon;
 		}
 		if (Chon == 1) tao1nam(f);
 		else if (Chon == 2) themLop(f);
+		else if (Chon == 3) them1SV(f);
+		else if (Chon == 4) themLop(f);
 		else return;
 	}
 }
@@ -682,104 +799,17 @@ void taoHK(fstream& f) {// TAO HOC KI
 		return;
 	}
 }
-void them1SV(fstream& f) {// THEM SINH VIEN VAO LOP HOC CO TRUOC DO
-	system("cls");
-	int dem = 0;
-	DSSV sv1;
-	cin.ignore();
-	cout << "Nhap thong tin sinh vien can them vao : " << endl;
-	cout << "Nhap ma so sinh vien : ";
-	cin.getline(sv1.MSSV, 15);
-	cout << "Nhap ten sinh vien : ";
-	cin.getline(sv1.Ten, 20);
-	cout << "Nhap ho va ten dem sinh vien : ";
-	cin.getline(sv1.Ho, 20);
-	cout << "Nhap gioi tinh sinh vien : ";
-	cin.getline(sv1.Gioitinh, 5);
-	cout << "Nhap ngay sinh sinh vien : ";
-	cin.getline(sv1.Ngaysinh, 20);
-	cout << "Nhap id xa hoi sinh vien : ";
-	cin.getline(sv1.idXH, 20);
-	f.open("Namhoc.csv", ios::in);
-	demDong(f, dem);
-	f.close();
-	Nam* nam = new Nam[dem];
-	f.open("Namhoc.csv", ios::in);// CHON NAM HOC DE THEM VAO
-	for (int i = 0; i < dem; i++) {
-		f.getline(nam[i].STT, 3, ',');
-		f.getline(nam[i].Tennam, 15, ',');
-		char a[100];
-		f.getline(a, 100, '\n');
-		cout << nam[i].STT << ". " << nam[i].Tennam << endl;
-	}
-	f.close();
-	int Chon;
-	cout << "Chon nam hoc : " << endl;
-	cin >> Chon;
-	for (int i = 0; i < dem; i++) {
-		if (stoi(nam[i].STT) == Chon) {
-			strcat_s(nam[i].Tennam, ".csv");
-			f.open(nam[i].Tennam, ios::in);
-			dem = 0;
-			demDong(f, dem);
-			f.close();
-			f.open(nam[i].Tennam, ios::in);
-			Lop* lop = new Lop[dem];
-			for (int j = 0; j < dem; j++) {// CHON LOP HOC TRONG NAM HOC DA CHON TRUOC DO DE THEM VAO
-				f.getline(lop[j].STT, 3, ',');
-				f.getline(lop[j].TenLop, 20, '\n');
-				cout << lop[j].STT << ". " << lop[j].TenLop << endl;
-			}
-			f.close();
-			cin.ignore();
-			cout << "Chon lop de coi danh sach : " << endl;
-			cin >> Chon;
-			for (int j = 0; j < dem; j++) {
-				if (stoi(lop[j].STT) == Chon) {
-					strcat_s(lop[j].TenLop, ".csv");
-					f.open(lop[j].TenLop, ios::in);
-					dem = 0;
-					demDong(f, dem);
-					f.close();
-					DSSV* sv = new DSSV[dem];
-					f.open(lop[j].TenLop, ios::in);
-					for (int i = 0; i < dem; i++) {
-						f.getline(sv[i].STT, 3, ',');
-						f.getline(sv[i].MSSV, 15, ',');
-						f.getline(sv[i].Ten, 20, ',');
-						f.getline(sv[i].Ho, 20, ',');
-						f.getline(sv[i].Gioitinh, 5, ',');
-						f.getline(sv[i].Ngaysinh, 20, ',');
-						f.getline(sv[i].idXH, 20, '\n');
-					}
-					f.close();
-					f.open(lop[j].TenLop, ios::out);
-					for (int i = 0; i < dem; i++) {
-						f << sv[i].STT << "," << sv[i].MSSV << "," << sv[i].Ten << "," << sv[i].Ho << "," << sv[i].Gioitinh << "," << sv[i].Ngaysinh << "," << sv[i].idXH << endl;
-					}
-					f<<dem+1 << "," << sv1.MSSV << "," << sv1.Ten << "," << sv1.Ho << "," << sv1.Gioitinh << "," << sv1.Ngaysinh << "," << sv1.idXH << endl;
-					f.close();
-					break;
-				}
-			}
-			break;
-		}
-	}
-}
 void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
-	int d = 0, m = 0;
+	int d = 0, m = 0,y=0;
 	while (1) {
 		system("cls");// MENU CHINH
-		cout << "Vui long nhap thoi gian hientai : " << endl;
-		cout << "Ngay :";
 		cout << "1. Thong tin ca nhan" << endl;
 		cout << "2. Doi mat khau" << endl;
-		cout << "3. Tao nam hoc" << endl;
-		cout << "4. Them 1 sinh vien vao mot lop" << endl;
-		cout << "5. Tao hoc ki" << endl;
-		cout << "6. Xem danh sach lop" << endl;
-		cout << "7. Set up thoi gian" << endl;
-		cout << "8. Dang xuat" << endl;
+		cout << "3. Nam hoc" << endl;
+		cout << "4. Tao hoc ki" << endl;
+		cout << "5. Xem danh sach lop" << endl;
+		cout << "6. Set up thoi gian" << endl;
+		cout << "7. Dang xuat" << endl;
 		int Chon;
 		cout << "Nhap : "; cin >> Chon;
 		while (Chon != 1 && Chon != 2 && Chon != 3 && Chon != 4&&Chon!=5&& Chon != 6&&Chon != 7 && Chon != 8) {
@@ -798,19 +828,17 @@ void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
 			break; 
 		}
 		case 4: {
-			them1SV(f);
-			break;
-		}
-		case 5: {
 			if (d != 1 && m != 9) {
 				cout << "Chi co the tao hoc ky vao dau nam (ngay 1 thang 9)" << endl;
 				system("pause");
 				continue;
 			}
-			taoHK(f); break; 
+			taoHK(f); break;
 		}
-		case 6:xemDanhsachLop(f); break;
-		case 7 : setupThoigian(d, m); break;
+		case 5: {
+			xemDanhsachLop(f); break;
+		}
+		case 6:setupThoigian(d, m); break;
 		default: return;
 		}
 	}

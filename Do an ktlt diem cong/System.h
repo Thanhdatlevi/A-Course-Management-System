@@ -15,7 +15,7 @@ typedef struct GV {
 };
 typedef struct Nam {
 	char STT[3];
-	char Tennam[15];
+	char Tennam[50];
 	char ngayBD[4];
 	char thangBD[4];
 	char namBD[7];
