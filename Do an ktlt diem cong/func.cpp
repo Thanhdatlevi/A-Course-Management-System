@@ -831,9 +831,9 @@ void delete1Course(char HK[]) {
 			strcat_s(temp1, "-");
 			strcat_s(temp1, KHoc[i].id);
 			strcat_s(temp1, ".csv");
+			remove(temp1);
+			break;
 		}
-		remove(temp1);
-		break;
 	}
 	for (int i = 0; i < dem; i++) {
 		if (strcmp(temp, KHoc[i].id) == 0) {
