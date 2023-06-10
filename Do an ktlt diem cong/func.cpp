@@ -525,6 +525,7 @@ void addKH(char HK[]) {
 			cout << "Ten file khong ton tai, vui long nhap lai. " << endl;
 			cout << "Nhap ten file DS Sinh Vien : ";
 			cin.getline(temp, 100);
+			f1.open(temp, ios::in);
 		}
 		demDong(f1, dem);
 		f1.close();
@@ -586,18 +587,19 @@ void listKH(char HK[]) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 	f.close();
 }
 void updateKH(char HK[]) {
-	char temp1[100];
-	cout << "Nhap ID khoa hoc can cap nhat";// CAP NHAT KHOA HOC THEO ID
-	cin.ignore();
-	cin.getline(temp1, 100);
 	fstream f;
 	int dem = 0;
-	f.open(HK, ios::in);
+	char temp[100];
+	strcpy_s(temp, strlen(HK) + 1, HK);
+	strcat_s(temp, "\\");
+	strcat_s(temp, "DSKH.csv");
+	f.open(temp, ios::in);
 	demDong(f, dem);
 	f.close();
-	KhoaHoc *KHoc=new KhoaHoc[dem];
-	f.open(HK, ios::in);
-	for(int i=0;i<dem;i++){
+	dem++;
+	KhoaHoc* KHoc = new KhoaHoc[dem];
+	f.open(temp, ios::in);
+	for (int i = 0; i < dem; i++) {
 		f.getline(KHoc[i].id, 10, ',');
 		f.getline(KHoc[i].TenKH, 30, ',');
 		f.getline(KHoc[i].TenLop, 30, ',');
@@ -606,37 +608,49 @@ void updateKH(char HK[]) {
 		f.getline(KHoc[i].MaxSV, 4, ',');
 		f.getline(KHoc[i].Thu, 4, ',');
 		f.getline(KHoc[i].ses, 3, '\n');
-		if (strcmp(KHoc[i].id, temp1) == 0) {
-
-			cout << "Ten Khoa Hoc : ";
-			cin.getline(KHoc[i].TenKH, 30);
-			cout << "Ten Lop : ";
-			cin.getline(KHoc[i].TenLop, 30);
-			cout << "Ten Giao Vien : ";
-			cin.getline(KHoc[i].TenGV, 50);
-			cout << "So Tin Chi : ";
-			cin.getline(KHoc[i].STC, 5);
-			cout << "So luong sinh vien : ";
-			cin.getline(KHoc[i].MaxSV, 4);
-			cout << "Thu : ";
-			cin.getline(KHoc[i].Thu, 4);
-			cout << "Tiet : ";
-			cin.getline(KHoc[i].ses, 3);
-		}
+		cout << KHoc[i].id << "  " << KHoc[i].TenKH << "  " << KHoc[i].TenLop << "  " << KHoc[i].TenGV << "  " << KHoc[i].STC << "  " << KHoc[i].MaxSV << "  " << KHoc[i].Thu << "  " << KHoc[i].ses << endl;
 	}
 	f.close();
-	f.open(HK, ios::out);
+	char temp1[100];
+	cout << "Nhap ID khoa hoc can cap nhat : ";// CAP NHAT KHOA HOC THEO ID
+	cin.ignore();
+	cin.getline(temp1, 100);
 	for (int i = 0; i < dem; i++) {
-		f << KHoc[i].id << "," << KHoc[i].TenKH << "," << KHoc[i].TenLop << "," << KHoc[i].TenGV << "," << KHoc[i].STC << "," << KHoc[i].MaxSV << "," << KHoc[i].Thu<< KHoc[i].ses << endl;
+		if (strcmp(KHoc[i].id, temp1) == 0) {
+				cout << "Cap nhat thong tin khoa hoc : " << endl;
+				cout << "ID khoc hoc : "<< KHoc[i].id<<endl;
+				cout << "Ten Khoa Hoc : "<< KHoc[i].TenKH<<endl;
+				cout << "Ten Lop : ";
+				cin.getline(KHoc[i].TenLop, 30);
+				cout << "Ten Giao Vien : ";
+				cin.getline(KHoc[i].TenGV, 50);
+				cout << "So Tin Chi : ";
+				cin.getline(KHoc[i].STC, 5);
+				cout << "So luong sinh vien : ";
+				cin.getline(KHoc[i].MaxSV, 4);
+				cout << "Thu : ";
+				cin.getline(KHoc[i].Thu, 4);
+				cout << "Tiet : ";
+				cin.getline(KHoc[i].ses, 3);
+		}
+	}
+	f.open(temp, ios::out);
+	for (int i = 0; i < dem; i++) {
+			f << KHoc[i].id << "," << KHoc[i].TenKH << "," << KHoc[i].TenLop << "," << KHoc[i].TenGV << "," << KHoc[i].STC << "," << KHoc[i].MaxSV << "," << KHoc[i].Thu << "," << KHoc[i].ses << endl;
 	}
 	f.close();
 }
 void add1SV(char HK[]) {
 	system("cls");
 	fstream f;
+	char temp1[100];
+	strcpy_s(temp1, strlen(HK) + 1, HK);
+	strcat_s(temp1, "\\");
+	strcat_s(temp1, "DSKH.csv");
 	int dem = 0;
-	f.open(HK, ios::in);
+	f.open(temp1, ios::in);
 	demDong(f, dem);
+	dem++;
 	f.close();
 	KhoaHoc* KHoc = new KhoaHoc[dem];
 	DSSV sv1;
@@ -654,7 +668,7 @@ void add1SV(char HK[]) {
 	cin.getline(sv1.Ngaysinh, 20);
 	cout << "Nhap id xa hoi sinh vien : ";
 	cin.getline(sv1.idXH, 20);
-	f.open(HK, ios::in);
+	f.open(temp1, ios::in);
 	for (int i = 0; i < dem; i++) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 		f.getline(KHoc[i].id, 10, ',');
 		f.getline(KHoc[i].TenKH, 30, ',');
@@ -673,15 +687,18 @@ void add1SV(char HK[]) {
 	cin.getline(temp, 50);
 	for (int i = 0; i < dem; i++) {
 		if (strcmp(temp, KHoc[i].id) == 0) {
-			strcat_s(KHoc[i].TenKH, "-");
-			strcat_s(KHoc[i].TenKH, KHoc[i].id);
-			strcat_s(KHoc[i].TenKH, ".csv");
-			f.open(KHoc[i].TenKH, ios::in);
+			strcpy_s(temp1, strlen(HK) + 1, HK);
+			strcat_s(temp1, "\\");
+			strcat_s(temp1, KHoc[i].TenKH);
+			strcat_s(temp1, "-");
+			strcat_s(temp1, KHoc[i].id);
+			strcat_s(temp1, ".csv");
+			f.open(temp1, ios::in);
 			dem = 0;
 			demDong(f, dem);
 			f.close();
 			DSSV* sv = new DSSV[dem];
-			f.open(KHoc[i].TenKH, ios::in);
+			f.open(temp1, ios::in);
 			for (int i = 0; i < dem; i++) {
 				f.getline(sv[i].STT, 3, ',');
 				f.getline(sv[i].MSSV, 15, ',');
@@ -692,7 +709,7 @@ void add1SV(char HK[]) {
 				f.getline(sv[i].idXH, 20, '\n');
 			}
 			f.close();
-			f.open(KHoc[i].TenKH, ios::out);
+			f.open(temp1, ios::out);
 			for (int i = 0; i < dem; i++) {
 				f << sv[i].STT << "," << sv[i].MSSV << "," << sv[i].Ten << "," << sv[i].Ho << "," << sv[i].Gioitinh << "," << sv[i].Ngaysinh << "," << sv[i].idXH << endl;
 			}
@@ -704,12 +721,17 @@ void add1SV(char HK[]) {
 void delete1SV(char HK[]) {
 	system("cls");
 	fstream f;
+	char temp1[100];
+	strcpy_s(temp1, strlen(HK) + 1, HK);
+	strcat_s(temp1, "\\");
+	strcat_s(temp1, "DSKH.csv");
 	int dem = 0;
-	f.open(HK, ios::in);
+	f.open(temp1, ios::in);
 	demDong(f, dem);
+	dem++;
 	f.close();
 	KhoaHoc* KHoc = new KhoaHoc[dem];
-	f.open(HK, ios::in);
+	f.open(temp1, ios::in);
 	for (int i = 0; i < dem; i++) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 		f.getline(KHoc[i].id, 10, ',');
 		f.getline(KHoc[i].TenKH, 30, ',');
@@ -729,15 +751,18 @@ void delete1SV(char HK[]) {
 	cin.getline(temp, 50);
 	for (int i = 0; i < dem; i++) {
 		if (strcmp(temp, KHoc[i].id) == 0) {
-			strcat_s(KHoc[i].TenKH, "-");
-			strcat_s(KHoc[i].TenKH, KHoc[i].id);
-			strcat_s(KHoc[i].TenKH, ".csv");
-			f.open(KHoc[i].TenKH, ios::in);
+			strcpy_s(temp1, strlen(HK) + 1, HK);
+			strcat_s(temp1, "\\");
+			strcat_s(temp1, KHoc[i].TenKH);
+			strcat_s(temp1, "-");
+			strcat_s(temp1, KHoc[i].id);
+			strcat_s(temp1, ".csv");
+			f.open(temp1, ios::in);
 			dem = 0;
 			demDong(f, dem);
 			f.close();
 			DSSV* sv = new DSSV[dem];
-			f.open(KHoc[i].TenKH, ios::in);
+			f.open(temp1, ios::in);
 			for (int j = 0; j < dem; j++) {
 				f.getline(sv[j].STT, 3, ',');
 				f.getline(sv[j].MSSV, 15, ',');
@@ -750,11 +775,11 @@ void delete1SV(char HK[]) {
 			}
 			f.close();
 			cout << "Nhap ma so sinh vien can xoa : ";
-			char temp1[50];
-			cin.getline(temp1, 50);
-			f.open(KHoc[i].TenKH, ios::out);
+			char temp2[50];
+			cin.getline(temp2, 50);
+			f.open(temp1, ios::out);
 			for (int j = 0; j < dem; j++) {
-				if (strcmp(temp1, sv[j].MSSV) == 0) {
+				if (strcmp(temp2, sv[j].MSSV) == 0) {
 					j++;
 					for (; j < dem; j++) {
 						f << j << "," << sv[j].MSSV << "," << sv[j].Ten << "," << sv[j].Ho << "," << sv[j].Gioitinh << "," << sv[j].Ngaysinh << "," << sv[j].idXH << endl;
@@ -770,12 +795,16 @@ void delete1SV(char HK[]) {
 void delete1Course(char HK[]) {
 	system("cls");
 	fstream f;
+	char temp1[100];
+	strcpy_s(temp1, strlen(HK) + 1, HK);
+	strcat_s(temp1, "\\");
+	strcat_s(temp1, "DSKH.csv");
 	int dem = 0;
-	f.open(HK, ios::in);
+	f.open(temp1, ios::in);
 	demDong(f, dem);
 	f.close();
 	KhoaHoc* KHoc = new KhoaHoc[dem];
-	f.open(HK, ios::in);
+	f.open(temp1, ios::in);
 	for (int i = 0; i < dem; i++) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 		f.getline(KHoc[i].id, 10, ',');
 		f.getline(KHoc[i].TenKH, 30, ',');
@@ -793,14 +822,18 @@ void delete1Course(char HK[]) {
 	char temp[50];
 	cin.ignore();
 	cin.getline(temp, 50);
-	f.open(HK, ios::out);
+	f.open(temp1, ios::out);
 	for (int i = 0; i < dem; i++) {
 		if (strcmp(temp, KHoc[i].id) == 0) {
-			strcat_s(KHoc[i].TenKH, "-");
-			strcat_s(KHoc[i].TenKH, KHoc[i].id);
-			strcat_s(KHoc[i].TenKH, ".csv");
+			strcpy_s(temp1, strlen(HK) + 1, HK);
+			strcat_s(temp1, "\\");
+			strcat_s(temp1, KHoc[i].TenKH);
+			strcat_s(temp1, "-");
+			strcat_s(temp1, KHoc[i].id);
+			strcat_s(temp1, ".csv");
 		}
-		remove(KHoc[i].TenKH);
+		remove(temp1);
+		break;
 	}
 	for (int i = 0; i < dem; i++) {
 		if (strcmp(temp, KHoc[i].id) == 0) {
@@ -838,7 +871,6 @@ void taoHK(fstream& f) {// TAO HOC KI
 		if (stoi(hk.thangBD) == 9) strcpy_s(hk.HKthu, "1");
 		else if (stoi(hk.thangBD) == 3) strcpy_s(hk.HKthu, "2");
 		else strcpy_s(hk.HKthu, "3");
-		cout << hk.HKthu<<endl;
 		system("cls");
 		int dem = 0;
 		f.open("Namhoc.csv", ios::in);
@@ -904,19 +936,42 @@ void taoHK(fstream& f) {// TAO HOC KI
 				strcat_s(temp1, hk.HKthu);
 				_mkdir(temp1);
 				addKH(temp1);// THEM CAC KHÔA HOC VAO HOC KI
-				cout << "1. Xem danh sach khoa hoc"<<endl;
-				cout << "2. Cap nhap danh sach"<<endl;
-				cout << "3. Them 1 sinh vien vao khoa hoc" << endl;
-				cout << "4. Xoa 1 sinh vien khoi khoa hoc" << endl;
-				cout << "5. Xoa 1 khoa hoc" << endl;
-				int Chon;
-				cout << "Nhap : "; cin >> Chon;
-				if (Chon==1) listKH(hk.Nam);
-				if (Chon == 2) updateKH(hk.Nam);
-				if (Chon == 3) add1SV(hk.Nam);
-				if (Chon == 4) delete1SV(hk.Nam);
-				if (Chon == 5) delete1Course(hk.Nam);
-				system("pause");
+				while (1) {
+					system("cls");
+					cout << "1. Xem danh sach khoa hoc" << endl;
+					cout << "2. Cap nhap danh sach" << endl;
+					cout << "3. Them 1 sinh vien vao khoa hoc" << endl;
+					cout << "4. Xoa 1 sinh vien khoi khoa hoc" << endl;
+					cout << "5. Xoa 1 khoa hoc" << endl;
+					int Chon;
+					cout << "Nhap : "; cin >> Chon;
+					switch (Chon) {
+					case 1: {
+						listKH(temp1);
+						system("pause");
+						break;
+					}
+					case 2: {
+						updateKH(temp1);
+						break;
+					}
+					case 3: {
+						add1SV(temp1);
+						break;
+					}
+					case 4: {
+						delete1SV(temp1);
+						break;
+					}
+					case 5: {
+						delete1Course(temp1);
+						break;
+					}
+					default: {
+						return;
+					}
+					}
+				}
 			}
 		}
 
@@ -952,8 +1007,8 @@ void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
 			break; 
 		}
 		case 4: {
-			if (d != 1 && m != 9) {
-				cout << "Chi co the tao hoc ky vao dau nam (ngay 1 thang 9)" << endl;
+			if (m != 9 && m!=2 && m!=6 ) {
+				cout << "Chi co the tao hoc ky vao dau hoc ki (thang 9, thang 3, thang 6)" << endl;
 				system("pause");
 				continue;
 			}
