@@ -28,6 +28,7 @@ typedef struct Lop {
 	char TenLop[20];
 };
 typedef struct DSSV {
+	char MKSV[20];
 	char STT[3];
 	char MSSV[15];
 	char Ten[20];

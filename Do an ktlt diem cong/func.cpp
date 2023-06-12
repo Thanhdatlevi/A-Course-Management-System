@@ -1169,10 +1169,152 @@ void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
 		}
 	}
 }
+void ThongtinSinhvien(fstream& f, char MSSV[], int STT) {// IN RA THONG TIN KHI CHON XEM THONG TIN
+	DSSV* sv = new DSSV[STT];
+	f.open("Student.csv", ios::in);
+	for (int i = 0; i < STT; i++) {
+		f.getline(sv[i].STT, 3, ',');
+		f.getline(sv[i].MSSV, 15, ',');
+		f.getline(sv[i].Ten, 20, ',');
+		f.getline(sv[i].Ho, 20, ',');
+		f.getline(sv[i].Gioitinh, 5, ',');
+		f.getline(sv[i].Ngaysinh, 20, ',');
+		f.getline(sv[i].idXH, 20, ',');
+		f.getline(sv[i].MKSV, 20, '\n');
+	}cout << sv[STT-1].STT << "     " << sv[STT - 1].MSSV << "     " << sv[STT - 1].Ten << "     " << sv[STT - 1].Ho << "     " << sv[STT - 1].Gioitinh << "     " << sv[STT - 1].Ngaysinh << "     " << sv[STT - 1].idXH << "     " << endl;
+	f.close();
+	delete[]sv;
+	cout << "An Enter de quay lai" << endl;
+	system("pause");
+}
+
+void doiMKSV(fstream& f, char MSSV[], int STT, int soSV) {
+	char temp[50];
+	cout << "Nhap mat khau muon thay doi : ";
+	cin.ignore();
+	cin.getline(temp, 50);
+	DSSV* sv = new DSSV[soSV];
+	f.open("Student.csv", ios::in);
+	for (int i = 0; i < soSV; i++) {
+		f.getline(sv[i].STT, 3, ',');
+		f.getline(sv[i].MSSV, 15, ',');
+		f.getline(sv[i].Ten, 20, ',');
+		f.getline(sv[i].Ho, 20, ',');
+		f.getline(sv[i].Gioitinh, 5, ',');
+		f.getline(sv[i].Ngaysinh, 20, ',');
+		f.getline(sv[i].idXH, 20, ',');
+		f.getline(sv[i].MKSV, 20, '\n');
+	}
+	f.close();
+	f.open("Student.csv", ios::out);
+	for (int j = 0; j < soSV; j++) {// NHAP LAI TAT CA GIAO VIEN VAO FILE VA THAY DOI MAT KHAU GIAO VIEN O DONG ELSE
+		if (j != STT - 1) f << sv[j].STT << "," << sv[j].MSSV << "," << sv[j].Ten << "," << sv[j].Ho << "," << sv[j].Gioitinh << "," << sv[j].Ngaysinh << "," << sv[j].idXH << "," << sv[j].MKSV << endl;
+		else f << sv[j].STT << "," << sv[j].MSSV << "," << sv[j].Ten << "," << sv[j].Ho << "," << sv[j].Gioitinh << "," << sv[j].Ngaysinh << "," << sv[j].idXH << "," << temp << endl;
+	}
+	cout << "Da thay doi mat khau thanh cong" << endl;
+	f.close();
+	delete[]sv;
+	cout << "An Enter de quay lai" << endl;
+	system("pause");
+}
+void Sinhvien(fstream& f, char MSSV[], char Ten[], int STT, int soSV) {
+	int d = 0, m = 0, y = 0;
+	while (1) {
+		system("cls");// MENU CHINH
+		cout << "1. Thong tin ca nhan" << endl;
+		cout << "2. Doi mat khau" << endl;
+		cout << "3. Nam hoc" << endl;
+		cout << "4. Hoc ki" << endl;
+		cout << "5. Xem danh sach sinh vien trong mot lop" << endl;
+		cout << "6. Xem danh sach khoa hoc" << endl;
+		cout << "7. Set up thoi gian" << endl;
+		cout << "8. Dang xuat" << endl;
+		int Chon;
+		cout << "Nhap : "; cin >> Chon;
+		while (Chon != 1 && Chon != 2 && Chon != 3 && Chon != 4 && Chon != 5 && Chon != 6 && Chon != 7 && Chon != 8) {
+			cout << "Nhap lai : "; cin >> Chon;
+		}
+		switch (Chon) {
+		case 1:ThongtinSinhvien(f, MSSV, STT); break;
+		case 2:doiMKSV(f, MSSV, STT, soSV); break;
+		/*case 3: {
+			if (d != 1 && m != 9) {
+				cout << "Chi co the tao hoc ky vao dau nam (ngay 1 thang 9)" << endl;
+				system("pause");
+				continue;
+			}
+			taoNam(f, MSSV);
+			break;
+		}
+		case 4: {
+			if (m != 9 && m != 2 && m != 6) {
+				cout << "Chi co the tao hoc ky vao dau hoc ki (thang 9, thang 3, thang 6)" << endl;
+				system("pause");
+				continue;
+			}
+			taoHK(f); break;
+		}*/
+		default: return;
+		}
+	}
+}
 void nhapTK() {
-	while(1){// NHAP TAI KHOA TRONG FILE ADMIN
+	while (1) {// NHAP TAI KHOA TRONG FILE ADMIN
 	DN:
 		int x = Dangnhap();
+		if (x == 1) {
+			system("cls");
+			fstream f;
+			char MK[20];
+			char TK[20];
+			f.open("Student.csv", ios::in);
+			int soHS = 0;
+			while (!f.eof()) {
+				char a[100];
+				f.getline(a, 100, '\n');
+				soHS++;
+			}
+			f.close();
+			DSSV* SV = new DSSV[soHS];
+			cout << "Tai khoan : ";
+			cin.ignore();
+			cin.getline(TK, 20);
+			cout << "Mat Khau : ";
+			cin.getline(MK, 20);
+			f.open("Student.csv", ios::in);
+			int k = 0;
+			char temp[100];
+			for (k; k < soHS; k++) {
+				char temp[50];
+				f.getline(SV[k].STT, 3, ',');
+				f.getline(SV[k].MSSV, 15, ',');
+				f.getline(SV[k].Ten, 20, ',');
+				f.getline(SV[k].Ho, 20, ',');
+				f.getline(SV[k].Gioitinh, 5, ',');
+				f.getline(SV[k].Ngaysinh, 20, ',');
+				f.getline(SV[k].idXH, 20, ',');
+				f.getline(SV[k].MKSV, 20, '\n');
+				if (strcmp(TK, SV[k].MSSV) == 0) {
+					while (strcmp(MK, SV[k].MKSV) != 0) {
+						cout << "Sai mat khau vui long nhap lai mat khau : ";
+						cin.getline(MK, 20);
+					}
+					k++;
+					f.close();
+					int Chon;
+					cout << "1. Dang nhap                2. Quay lai" << endl;
+					cout << "Nhap : "; cin >> Chon;
+					if (Chon != 1 && Chon != 2) {
+						cout << "Nhap lai : "; cin >> Chon;
+					}
+					if (Chon == 2) goto DN;
+					else Sinhvien(f, SV[k].MSSV,SV[k].Ten, k, soHS);
+					delete[]SV;
+					break;
+				}
+			}
+			
+		}
 		if (x == 3) { return; }
 		if (x == 2) {
 			system("cls");
@@ -1213,7 +1355,7 @@ void nhapTK() {
 			k++;
 			f.close();
 			int Chon;
-			cout << "1. Dang nhap                2. Quay lai"<<endl;
+			cout << "1. Dang nhap                2. Quay lai" << endl;
 			cout << "Nhap : "; cin >> Chon;
 			if (Chon != 1 && Chon != 2) {
 				cout << "Nhap lai : "; cin >> Chon;
