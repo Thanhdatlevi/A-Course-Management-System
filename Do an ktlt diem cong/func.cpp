@@ -1123,6 +1123,46 @@ void taoHK(fstream& f) {// TAO HOC KI
 		return;
 	}
 }
+void nhapDiem(fstream& f) {
+
+}
+void quanliDiem(fstream& f) {
+	while (1) {
+		system("cls");// MENU CHINH
+		cout << "1. Nhap diem" << endl;
+		cout << "2. Xem diem cua khoa hoc" << endl;
+		cout << "3. Nam hoc" << endl;
+		cout << "4. Hoc ki" << endl;
+		cout << "9. Dang xuat" << endl;
+		int Chon;
+		cout << "Nhap : "; cin >> Chon;
+		while (Chon != 1 && Chon != 2 && Chon != 3 && Chon != 4 && Chon != 5 && Chon != 6 && Chon != 7 && Chon != 8) {
+			cout << "Nhap lai : "; cin >> Chon;
+		}
+		switch (Chon) {
+		case 1:nhapDiem(f); break;
+		/*case 2:doiMK(f, TK, STT, soGV); break;
+		case 3: {
+			if (d != 1 && m != 9) {
+				cout << "Chi co the tao hoc ky vao dau nam (ngay 1 thang 9)" << endl;
+				system("pause");
+				continue;
+			}
+			taoNam(f, TK);
+			break;
+		}
+		case 4: {
+			if (m != 9 && m != 2 && m != 6) {
+				cout << "Chi co the tao hoc ky vao dau hoc ki (thang 9, thang 3, thang 6)" << endl;
+				system("pause");
+				continue;
+			}
+			taoHK(f); break;
+		}*/
+		default: return;
+		}
+	}
+}
 void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
 	int d = 0, m = 0,y=0;
 	while (1) {
@@ -1133,8 +1173,9 @@ void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
 		cout << "4. Hoc ki" << endl;
 		cout << "5. Xem danh sach sinh vien trong mot lop" << endl;
 		cout << "6. Xem danh sach khoa hoc" << endl;
-		cout << "7. Set up thoi gian" << endl;
-		cout << "8. Dang xuat" << endl;
+		cout << "7. Quan li diem" << endl;
+		cout << "8. Set up thoi gian" << endl;
+		cout << "9. Dang xuat" << endl;
 		int Chon;
 		cout << "Nhap : "; cin >> Chon;
 		while (Chon != 1 && Chon != 2 && Chon != 3 && Chon != 4&&Chon!=5&& Chon != 6&&Chon != 7 && Chon != 8) {
@@ -1164,7 +1205,8 @@ void Giangvien(fstream &f,char TK[],char MK[],int STT,int soGV) {
 			xemDanhsachLop(f); break;
 		}
 		case 6:xemHKvsKH(f); break;
-		case 7: setupThoigian(d, m); break;
+		case 7: quanliDiem(f); break;
+		case 8:setupThoigian(d, m); break;
 		default: return;
 		}
 	}
