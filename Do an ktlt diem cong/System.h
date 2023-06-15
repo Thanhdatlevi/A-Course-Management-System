@@ -32,10 +32,14 @@ typedef struct DSSV {
 	char STT[3];
 	char MSSV[15];
 	char Ten[20];
-	char Ho[20];
+	char Ho[50];
 	char Gioitinh[5];
 	char Ngaysinh[20];
 	char idXH[20];
+	char totalDiem[3];
+	char finalDiem[3];
+	char midDiem[3];
+	char otherDiem[3];
 };
 
 typedef struct HK {
