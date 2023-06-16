@@ -1522,32 +1522,174 @@ void xemDiem1KH(fstream& f) {
 		if (Chon == 2) return;
 	}
 }
+void capnhatDiem(fstream& f) {
+	while (1) {
+		system("cls");
+		fstream f1;
+		int dem = 0;
+		f.open("Namhoc.csv", ios::in);
+		demDong(f, dem);
+		Nam* nam = new Nam[dem];
+		f.close();
+		f.open("Namhoc.csv", ios::in);
+		for (int i = 0; i < dem; i++) {// DANH SACH CAC NAM DE LUA CHON
+			f.getline(nam[i].STT, 3, ',');
+			f.getline(nam[i].Tennam, 15, ',');
+			char a[100];
+			f.getline(a, 100, '\n');
+			cout << nam[i].STT << ". " << nam[i].Tennam << endl;
+		}
+		f.close();
+		cout << "Chon nien khoa de xem danh sach lop : " << endl;
+		int Chon;
+		cin >> Chon;
+		char temp1[100];
+		for (int i = 0; i < dem; i++) {
+			if (stoi(nam[i].STT) == Chon) {
+				strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
+				strcat_s(temp1, "\\");
+				strcat_s(temp1, nam[i].Tennam);
+				strcat_s(temp1, "_HK");
+				strcat_s(temp1, "\\");
+				strcat_s(temp1, nam[i].Tennam);
+				strcat_s(temp1, "_HK.csv");
+				f.open(temp1, ios::in);
+				dem = 0;
+				demDong(f, dem);
+				f.close();
+				f.open(temp1, ios::in);
+				HK* hk1 = new HK[dem];
+				for (int j = 0; j < dem; j++) {// KIEM TRA XEM HOC KI DO DA CO TRONG NAM HOC CHUA
+					f.getline(hk1[j].HKthu, 3, ',');
+					f.getline(hk1[j].ngayBD, 4, ',');
+					f.getline(hk1[j].thangBD, 4, ',');
+					f.getline(hk1[j].namBD, 7, ',');
+					f.getline(hk1[j].ngayKT, 4, ',');
+					f.getline(hk1[j].thangKT, 4, ',');
+					f.getline(hk1[j].namKT, 7, '\n');
+					cout << hk1[j].HKthu << ". Hoc ki thu " << hk1[j].HKthu << endl;
+				}
+				f.close();
+				cout << "Hoc ki de xem khoa hoc : " << endl;
+				cin >> Chon;
+				for (int j = 0; j < dem; j++) {
+					if (stoi(hk1[j].HKthu) == Chon) {
+						strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
+						strcat_s(temp1, "\\");
+						strcat_s(temp1, nam[i].Tennam);
+						strcat_s(temp1, "_HK");
+						strcat_s(temp1, "\\");
+						strcat_s(temp1, nam[i].Tennam);
+						strcat_s(temp1, "_HK");
+						strcat_s(temp1, hk1[j].HKthu);
+						strcat_s(temp1, "\\");
+						strcat_s(temp1, "DSKH.csv");
+						f.open(temp1, ios::in);
+						dem = 0;
+						demDong(f, dem);
+						f.close();
+						KhoaHoc* KHoc = new KhoaHoc[dem];
+						f.open(temp1, ios::in);
+						for (int k = 0; k < dem; k++) {
+							f.getline(KHoc[k].id, 10, ',');
+							f.getline(KHoc[k].TenKH, 30, ',');
+							f.getline(KHoc[k].TenLop, 30, ',');
+							f.getline(KHoc[k].TenGV, 50, ',');
+							f.getline(KHoc[k].STC, 5, ',');
+							f.getline(KHoc[k].MaxSV, 4, ',');
+							f.getline(KHoc[k].Thu, 4, ',');
+							f.getline(KHoc[k].ses, 3, '\n');
+							cout << KHoc[k].id << "  " << KHoc[k].TenKH << "  " << KHoc[k].TenLop << "  " << KHoc[k].TenGV << "  " << KHoc[k].STC << "  " << KHoc[k].MaxSV << "  " << KHoc[k].Thu << "  " << KHoc[k].ses;
+							cout << endl;
+						}
+						f.close();
+						cout << "Nhap id khoa hoc can them diem : ";
+						cin.ignore();
+						cin.getline(temp1, 50);
+						for (int k = 0; k < dem; k++) {
+							if (strcmp(temp1, KHoc[k].id) == 0) {
+								strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
+								strcat_s(temp1, "\\");
+								strcat_s(temp1, nam[i].Tennam);
+								strcat_s(temp1, "_HK");
+								strcat_s(temp1, "\\");
+								strcat_s(temp1, nam[i].Tennam);
+								strcat_s(temp1, "_HK");
+								strcat_s(temp1, hk1[j].HKthu);
+								strcat_s(temp1, "\\");
+								strcat_s(temp1, KHoc[k].TenKH);
+								strcat_s(temp1, "-");
+								strcat_s(temp1, KHoc[k].id);
+								strcat_s(temp1, "-Diem.csv");
+								f.open(temp1, ios::in);
+								dem = 0;
+								demDong(f, dem);
+								f.close();
+								DSSV* sv = new DSSV[dem];
+								f.open(temp1, ios::in);
+								for (int l = 0; l < dem; l++) {
+									f.getline(sv[l].STT, 3, ',');
+									f.getline(sv[l].MSSV, 15, ',');
+									f.getline(sv[l].Ho, 50, ',');
+									f.getline(sv[l].totalDiem, 3, ',');
+									f.getline(sv[l].finalDiem, 3, ',');
+									f.getline(sv[l].midDiem, 3, ',');
+									f.getline(sv[l].otherDiem, 3, '\n');
+									cout << sv[l].STT << "   " << sv[l].MSSV << "   " << sv[l].Ho << "   " << sv[l].totalDiem << "   " << sv[l].finalDiem << "   " << sv[l].midDiem << "   " << sv[l].otherDiem << endl;
+								}
+								f.close();
+								cout << "Nhap MSSV can cap nhat : ";
+								char temp[15];
+								cin.getline(temp, 15);
+								DSSV sv1;
+								cout << "Nhap diem tong ket : ";
+								cin.getline(sv1.totalDiem, 3);
+								cout << "Nhap diem cuoi ki : ";
+								cin.getline(sv1.finalDiem, 3);
+								cout << "Nhap diem giua ki : ";
+								cin.getline(sv1.midDiem, 3);
+								cout << "Nhap diem khac : ";
+								cin.getline(sv1.otherDiem, 3);
+								f.open(temp1, ios::out);
+								for (int l = 0; l < dem; l++) {
+									if (strcmp(temp, sv[l].MSSV) == 0) {
+										f << sv[l].STT << ',' << sv[l].MSSV << ',' << sv[l].Ho << ',' << sv1.totalDiem << ',' << sv1.finalDiem << ',' << sv1.midDiem << ',' << sv1.otherDiem << endl;
+									}
+									f << sv[l].STT << ',' << sv[l].MSSV << ',' << sv[l].Ho << ',' << sv[l].totalDiem << ',' << sv[l].finalDiem << ',' << sv[l].midDiem << ',' << sv[l].otherDiem << endl;
+								}
+								f.close();
+							}
+						}
+						f.close();
+					}
+					break;
+				}
+			}break;
+		}
+		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
+		cout << "Nhap : "; cin >> Chon;
+		if (Chon == 2) return;
+	}
+}
 void quanliDiem(fstream& f) {
 	while (1) {
 		system("cls");// MENU CHINH
 		cout << "1. Lay File sinh vien" << endl;
 		cout << "2. Them File diem" << endl;
 		cout << "3. Xem diem 1 khoa hoc" << endl;
-		cout << "4. Hoc ki" << endl;
-		cout << "4. Hoc ki" << endl;
-		cout << "9. Dang xuat" << endl;
+		cout << "4. Cap nhat diem" << endl;
+		cout << "5. Xem diem theo lop" << endl;
+		cout << "6. Dang xuat" << endl;
 		int Chon;
 		cout << "Nhap : "; cin >> Chon;
-		while (Chon != 1 && Chon != 2 && Chon != 3 && Chon != 4 && Chon != 58) {
+		while (Chon != 1 && Chon != 2 && Chon != 3 && Chon != 4 && Chon != 5 && Chon != 6) {
 			cout << "Nhap lai : "; cin >> Chon;
 		}
 		switch (Chon) {
 		case 1:nhapDiem(f); break;
 		case 2:themDiem(f); break;
 		case 3:xemDiem1KH(f); break;
-		/*case 4: {
-			if (m != 9 && m != 2 && m != 6) {
-				cout << "Chi co the tao hoc ky vao dau hoc ki (thang 9, thang 3, thang 6)" << endl;
-				system("pause");
-				continue;
-			}
-			taoHK(f); break;
-		}*/
+		case 4:capnhatDiem(f); break;
 		default: return;
 		}
 	}
