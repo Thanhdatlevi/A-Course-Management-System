@@ -127,8 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Chucnangdacbiet.cpp" />
+    <ClCompile Include="ChucnangGV.cpp" />
+    <ClCompile Include="ChucnangSV.cpp" />
+    <ClCompile Include="DangnhapSV.cpp" />
     <ClCompile Include="func.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuSVandGV.cpp" />
+    <ClCompile Include="quanliDiem.cpp" />
+    <ClCompile Include="quanliHocki.cpp" />
+    <ClCompile Include="quanliNamhoc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System.h" />
