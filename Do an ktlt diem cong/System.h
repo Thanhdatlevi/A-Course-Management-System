@@ -94,3 +94,4 @@ void ThongtinSinhvien(fstream& f, char MSSV[], int STT);
 void doiMKSV(fstream& f, char MSSV[], int STT, int soSV);
 void xemTKB(fstream& f, char MSSV[]);
 void setupThoigian(int& d, int& m);
+void xemDiem(fstream& f, char MSSV[]);

@@ -57,6 +57,7 @@ void tao1nam(fstream& f) {// TAO MOT NAM HOC
 	cout << "An Enter de quay lai" << endl;
 	system("pause");
 }
+
 void themLop(fstream& f) {
 	char newclass[50];
 	cin.ignore();
@@ -109,6 +110,7 @@ void themLop(fstream& f) {
 	f.close();
 	system("pause");
 }
+
 void them1SV(fstream& f) {// THEM SINH VIEN VAO LOP HOC CO TRUOC DO
 	system("cls");
 	int dem = 0;
@@ -206,6 +208,7 @@ void them1SV(fstream& f) {// THEM SINH VIEN VAO LOP HOC CO TRUOC DO
 		}
 	}
 }
+
 void them1DS(fstream& f) {
 	system("cls");
 	int dem = 0, dem1 = 0;

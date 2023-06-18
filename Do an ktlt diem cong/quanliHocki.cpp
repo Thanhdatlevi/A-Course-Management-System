@@ -302,6 +302,7 @@ void delete1SV(char HK[]) {
 				f << sv[j].STT << "," << sv[j].MSSV << "," << sv[j].Ten << "," << sv[j].Ho << "," << sv[j].Gioitinh << "," << sv[j].Ngaysinh << "," << sv[j].idXH << endl;
 			}
 			f.close();
+			break;
 		}
 	}
 }

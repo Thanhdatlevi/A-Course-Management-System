@@ -20,14 +20,7 @@ void Sinhvien(fstream& f, char MSSV[], char Ten[], int STT, int soSV) {
 			xemTKB(f, MSSV);
 			break;
 		}
-			  /*case 4: {
-				  if (m != 9 && m != 2 && m != 6) {
-					  cout << "Chi co the tao hoc ky vao dau hoc ki (thang 9, thang 3, thang 6)" << endl;
-					  system("pause");
-					  continue;
-				  }
-				  taoHK(f); break;
-			  }*/
+		case 4: xemDiem(f, MSSV); break;
 		default: return;
 		}
 	}

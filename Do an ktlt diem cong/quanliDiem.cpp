@@ -122,13 +122,14 @@ void nhapDiem(fstream& f) {
 								}
 								f.close();
 								f1.close();
+								break;
 							}
 						}
 						f.close();
+						break;
 					}
-					break;
-				}
-			}break;
+				}break;
+			}
 		}
 		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
 		cout << "Nhap : "; cin >> Chon;
@@ -257,13 +258,14 @@ void themDiem(fstream& f) {
 								}
 								f.close();
 								f1.close();
+								break;
 							}
 						}
 						f.close();
+						break;
 					}
-					break;
-				}
-			}break;
+				}break;
+			}
 		}
 		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
 		cout << "Nhap : "; cin >> Chon;
@@ -386,13 +388,14 @@ void xemDiem1KH(fstream& f) {
 									cout << sv[l].STT << "   " << sv[l].MSSV << "   " << sv[l].Ho << "   " << sv[l].totalDiem << "   " << sv[l].finalDiem << "   " << sv[l].midDiem << "   " << sv[l].otherDiem << endl;
 								}
 								f.close();
+								break;
 							}
 						}
 						f.close();
+						break;
 					}
-					break;
-				}
-			}break;
+				}break;
+			}
 		}
 		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
 		cout << "Nhap : "; cin >> Chon;
@@ -535,13 +538,14 @@ void capnhatDiem(fstream& f) {
 									f << sv[l].STT << ',' << sv[l].MSSV << ',' << sv[l].Ho << ',' << sv[l].totalDiem << ',' << sv[l].finalDiem << ',' << sv[l].midDiem << ',' << sv[l].otherDiem << endl;
 								}
 								f.close();
+								break;
 							}
 						}
 						f.close();
+						break;
 					}
-					break;
-				}
-			}break;
+				}break;
+			}
 		}
 		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
 		cout << "Nhap : "; cin >> Chon;

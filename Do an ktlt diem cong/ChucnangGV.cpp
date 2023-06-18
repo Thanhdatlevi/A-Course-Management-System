@@ -72,6 +72,7 @@ void taoNam(fstream& f, char TK[]) {// TAO NAM HOC DUNG DE TAO MOT NAM HOC MOI H
 		else return;
 	}
 }
+
 void xemDanhsachLop(fstream& f) {
 	while (1) {
 		system("cls");
@@ -143,7 +144,7 @@ void xemDanhsachLop(fstream& f) {
 							f.getline(sv[i].idXH, 50, '\n');
 							cout << sv[i].STT << "     " << sv[i].MSSV << "     " << sv[i].Ten << "     " << sv[i].Ho << "     " << sv[i].Gioitinh << "     " << sv[i].Ngaysinh << "     " << sv[i].idXH << "     " << endl;
 						}
-						f.close();
+						f.close(); 
 						break;
 					}
 				}
@@ -159,15 +160,18 @@ void xemDanhsachLop(fstream& f) {
 		if (Chon == 2) return;
 	}
 }
+
 void xemHKvsKH(fstream& f) {
 	while (1) {
 		system("cls");
 		fstream f1;
+		int a, b, c, d;
 		int dem = 0;
 		f.open("Namhoc.csv", ios::in);
 		demDong(f, dem);
 		Nam* nam = new Nam[dem];
 		f.close();
+		a = dem;
 		f.open("Namhoc.csv", ios::in);
 		char temp[100];
 		for (int i = 0; i < dem; i++) {// DANH SACH CAC NAM DE LUA CHON
@@ -182,7 +186,7 @@ void xemHKvsKH(fstream& f) {
 		int Chon;
 		cin >> Chon;
 		char temp1[100];
-		for (int i = 0; i < dem; i++) {
+		for (int i = 0; i < a; i++) {
 			if (stoi(nam[i].STT) == Chon) {
 				strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
 				strcat_s(temp1, "\\");
@@ -195,6 +199,7 @@ void xemHKvsKH(fstream& f) {
 				dem = 0;
 				demDong(f, dem);
 				f.close();
+				b = dem;
 				f.open(temp1, ios::in);
 				HK* hk1 = new HK[dem];
 				for (int j = 0; j < dem; j++) {// KIEM TRA XEM HOC KI DO DA CO TRONG NAM HOC CHUA
@@ -210,7 +215,7 @@ void xemHKvsKH(fstream& f) {
 				f.close();
 				cout << "Hoc ki de xem khoa hoc : " << endl;
 				cin >> Chon;
-				for (int j = 0; j < dem; j++) {
+				for (int j = 0; j < b; j++) {
 					if (stoi(hk1[j].HKthu) == Chon) {
 						strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
 						strcat_s(temp1, "\\");
@@ -227,6 +232,7 @@ void xemHKvsKH(fstream& f) {
 						demDong(f, dem);
 						f.close();
 						dem++;
+						c = dem;
 						KhoaHoc* KHoc = new KhoaHoc[dem];
 						f.open(temp1, ios::in);
 						for (int k = 0; k < dem; k++) {
@@ -244,7 +250,7 @@ void xemHKvsKH(fstream& f) {
 						cout << "Nhap ID khoa hoc can cap nhat : ";// CAP NHAT KHOA HOC THEO ID
 						cin.ignore();
 						cin.getline(temp, 100);
-						for (int k = 0; k < dem; k++) {
+						for (int k = 0; k < c; k++) {
 							if (strcmp(temp, KHoc[k].id) == 0) {
 								strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
 								strcat_s(temp1, "\\");
@@ -276,12 +282,12 @@ void xemHKvsKH(fstream& f) {
 									cout << sv[k].STT << "     " << sv[k].MSSV << "     " << sv[k].Ten << "     " << sv[k].Ho << "     " << sv[k].Gioitinh << "     " << sv[k].Ngaysinh << "     " << sv[k].idXH << "     " << endl;
 								}
 								f.close();
+								break;
 							}
-						}
-						break;
+						}break;
 					}
-				}
-			}break;
+				}break;
+			}
 		}
 		cout << "1. Xem danh sach khoa hoc khac            2. Thoat" << endl;
 		cout << "Nhap : ";
@@ -418,7 +424,7 @@ void taoHK(fstream& f) {// TAO HOC KI
 						return;
 					}
 					}
-				}
+				}break;
 			}
 		}
 
