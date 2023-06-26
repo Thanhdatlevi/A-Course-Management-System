@@ -29,6 +29,7 @@ void addKH(char HK[]) {
 		cin.getline(KHoc.ses, 3);
 		f << KHoc.id << "," << KHoc.TenKH << "," << KHoc.TenLop << "," << KHoc.TenGV << "," << KHoc.STC << "," << KHoc.MaxSV << "," << KHoc.Thu << "," << KHoc.ses << endl;
 		fstream f1;
+		cout << "----------------------------------------------" << endl;
 		cout << "Nhap dia chi file DS Sinh Vien : ";// THEM FILE DS SINH VIEN CO SAN VAO TRONG KHOA HOC 
 		char temp[100];
 		cin.getline(temp, 100);
@@ -36,6 +37,7 @@ void addKH(char HK[]) {
 		f1.open(temp, ios::in);
 		while (f1.is_open() == 0) {
 			cout << "Ten file khong ton tai, vui long nhap lai. " << endl;
+			cout << "----------------------------------------------" << endl;
 			cout << "Nhap ten file DS Sinh Vien : ";
 			cin.getline(temp, 100);
 			f1.open(temp, ios::in);
@@ -66,7 +68,9 @@ void addKH(char HK[]) {
 			f1 << sv[i].STT << "," << sv[i].MSSV << "," << sv[i].Ten << "," << sv[i].Ho << "," << sv[i].Gioitinh << "," << sv[i].Ngaysinh << "," << sv[i].idXH << endl;
 		}
 		f1.close();
+		cout << "----------------------------------------------" << endl;
 		cout << "1. Them khoa hoc             2.Thoat" << endl;// THEM NHIEU KHOA HOC VAO HOC KI
+		cout << "----------------------------------------------" << endl;
 		int Chon;
 		cout << "Nhap : "; cin >> Chon;
 		if (Chon == 2) {
@@ -76,6 +80,7 @@ void addKH(char HK[]) {
 	}
 	f.close();
 }
+
 void listKH(char HK[]) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 	system("cls");
 	fstream f;
@@ -84,6 +89,7 @@ void listKH(char HK[]) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 	strcat_s(temp1, "\\");
 	strcat_s(temp1, "DSKH.csv");
 	KhoaHoc KHoc;
+	cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(20) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
 	f.open(temp1, ios::in);
 	while (!f.eof()) {
 		f.getline(KHoc.id, 10, ',');
@@ -94,11 +100,11 @@ void listKH(char HK[]) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 		f.getline(KHoc.MaxSV, 4, ',');
 		f.getline(KHoc.Thu, 4, ',');
 		f.getline(KHoc.ses, 3, '\n');
-		cout << KHoc.id << "  " << KHoc.TenKH << "  " << KHoc.TenLop << "  " << KHoc.TenGV << "  " << KHoc.STC << "  " << KHoc.MaxSV << "  " << KHoc.Thu << "  " << KHoc.ses;
-		cout << endl;
+		cout << left << setw(15) << KHoc.id << left << setw(30) << KHoc.TenKH << left << setw(10) << KHoc.TenLop << left << setw(20) << KHoc.TenGV << left << setw(10) << KHoc.STC << left << setw(8) << KHoc.MaxSV << left << setw(8) << KHoc.Thu << left << setw(7) << KHoc.ses << endl;
 	}
 	f.close();
 }
+
 void updateKH(char HK[]) {
 	fstream f;
 	int dem = 0;
@@ -111,6 +117,7 @@ void updateKH(char HK[]) {
 	f.close();
 	dem++;
 	KhoaHoc* KHoc = new KhoaHoc[dem];
+	cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(20) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
 	f.open(temp, ios::in);
 	for (int i = 0; i < dem; i++) {
 		f.getline(KHoc[i].id, 10, ',');
@@ -121,13 +128,15 @@ void updateKH(char HK[]) {
 		f.getline(KHoc[i].MaxSV, 4, ',');
 		f.getline(KHoc[i].Thu, 4, ',');
 		f.getline(KHoc[i].ses, 3, '\n');
-		cout << KHoc[i].id << "  " << KHoc[i].TenKH << "  " << KHoc[i].TenLop << "  " << KHoc[i].TenGV << "  " << KHoc[i].STC << "  " << KHoc[i].MaxSV << "  " << KHoc[i].Thu << "  " << KHoc[i].ses << endl;
+		cout << left << setw(15) << KHoc[i].id << left << setw(30) << KHoc[i].TenKH << left << setw(10) << KHoc[i].TenLop << left << setw(20) << KHoc[i].TenGV << left << setw(10) << KHoc[i].STC << left << setw(8) << KHoc[i].MaxSV << left << setw(8) << KHoc[i].Thu << left << setw(7) << KHoc[i].ses << endl;
 	}
 	f.close();
 	char temp1[100];
+	cout << "----------------------------------------------" << endl;
 	cout << "Nhap ID khoa hoc can cap nhat : ";// CAP NHAT KHOA HOC THEO ID
 	cin.ignore();
 	cin.getline(temp1, 100);
+	cout << "----------------------------------------------" << endl;
 	for (int i = 0; i < dem; i++) {
 		if (strcmp(KHoc[i].id, temp1) == 0) {
 			cout << "Cap nhat thong tin khoa hoc : " << endl;
@@ -153,6 +162,7 @@ void updateKH(char HK[]) {
 	}
 	f.close();
 }
+
 void add1SV(char HK[]) {
 	system("cls");
 	fstream f;
@@ -169,6 +179,7 @@ void add1SV(char HK[]) {
 	DSSV sv1;
 	cin.ignore();
 	cout << "Nhap thong tin sinh vien can them vao : " << endl;
+	cout << "----------------------------------------------" << endl;
 	cout << "Nhap ma so sinh vien : ";
 	cin.getline(sv1.MSSV, 15);
 	cout << "Nhap ten sinh vien : ";
@@ -181,6 +192,7 @@ void add1SV(char HK[]) {
 	cin.getline(sv1.Ngaysinh, 20);
 	cout << "Nhap id xa hoi sinh vien : ";
 	cin.getline(sv1.idXH, 20);
+	cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(20) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
 	f.open(temp1, ios::in);
 	for (int i = 0; i < dem; i++) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 		f.getline(KHoc[i].id, 10, ',');
@@ -191,10 +203,10 @@ void add1SV(char HK[]) {
 		f.getline(KHoc[i].MaxSV, 4, ',');
 		f.getline(KHoc[i].Thu, 4, ',');
 		f.getline(KHoc[i].ses, 3, '\n');
-		cout << KHoc[i].id << "  " << KHoc[i].TenKH << "  " << KHoc[i].TenLop << "  " << KHoc[i].TenGV << "  " << KHoc[i].STC << "  " << KHoc[i].MaxSV << "  " << KHoc[i].Thu << "  " << KHoc[i].ses;
-		cout << endl;
+		cout << left << setw(15) << KHoc[i].id << left << setw(30) << KHoc[i].TenKH << left << setw(10) << KHoc[i].TenLop << left << setw(20) << KHoc[i].TenGV << left << setw(10) << KHoc[i].STC << left << setw(8) << KHoc[i].MaxSV << left << setw(8) << KHoc[i].Thu << left << setw(7) << KHoc[i].ses << endl;
 	}
 	f.close();
+	cout << "----------------------------------------------" << endl;
 	cout << "Nhap id khoa hoc can them sinh vien : ";
 	char temp[50];
 	cin.getline(temp, 50);
@@ -231,6 +243,7 @@ void add1SV(char HK[]) {
 		}
 	}
 }
+
 void delete1SV(char HK[]) {
 	system("cls");
 	fstream f;
@@ -244,6 +257,7 @@ void delete1SV(char HK[]) {
 	dem++;
 	f.close();
 	KhoaHoc* KHoc = new KhoaHoc[dem];
+	cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(20) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
 	f.open(temp1, ios::in);
 	for (int i = 0; i < dem; i++) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 		f.getline(KHoc[i].id, 10, ',');
@@ -254,10 +268,10 @@ void delete1SV(char HK[]) {
 		f.getline(KHoc[i].MaxSV, 4, ',');
 		f.getline(KHoc[i].Thu, 4, ',');
 		f.getline(KHoc[i].ses, 3, '\n');
-		cout << KHoc[i].id << "  " << KHoc[i].TenKH << "  " << KHoc[i].TenLop << "  " << KHoc[i].TenGV << "  " << KHoc[i].STC << "  " << KHoc[i].MaxSV << "  " << KHoc[i].Thu << "  " << KHoc[i].ses;
-		cout << endl;
+		cout << left << setw(15) << KHoc[i].id << left << setw(30) << KHoc[i].TenKH << left << setw(10) << KHoc[i].TenLop << left << setw(20) << KHoc[i].TenGV << left << setw(10) << KHoc[i].STC << left << setw(8) << KHoc[i].MaxSV << left << setw(8) << KHoc[i].Thu << left << setw(7) << KHoc[i].ses << endl;
 	}
 	f.close();
+	cout << "----------------------------------------------" << endl;
 	cout << "Nhap id khoa hoc can xoa sinh vien : ";
 	char temp[50];
 	cin.ignore();
@@ -275,6 +289,7 @@ void delete1SV(char HK[]) {
 			demDong(f, dem);
 			f.close();
 			DSSV* sv = new DSSV[dem];
+			cout << left << setw(8) << "STT" << left << setw(13) << "MSSV" << left << setw(10) << "Ho" << left << setw(20) << "Ten" << left << setw(15) << "Gioi tinh" << left << setw(20) << "Ngay sinh" << "ID Xa hoi" << endl;
 			f.open(temp1, ios::in);
 			for (int j = 0; j < dem; j++) {
 				f.getline(sv[j].STT, 3, ',');
@@ -284,9 +299,10 @@ void delete1SV(char HK[]) {
 				f.getline(sv[j].Gioitinh, 5, ',');
 				f.getline(sv[j].Ngaysinh, 20, ',');
 				f.getline(sv[j].idXH, 20, '\n');
-				cout << sv[j].STT << "     " << sv[j].MSSV << "     " << sv[j].Ten << "     " << sv[j].Ho << "     " << sv[j].Gioitinh << "     " << sv[j].Ngaysinh << "     " << sv[j].idXH << "     " << endl;
+				cout << left << setw(8) << sv[j].STT << left << setw(13) << sv[j].MSSV << left << setw(10) << sv[j].Ten << left << setw(20) << sv[j].Ho << left << setw(15) << sv[j].Gioitinh << left << setw(20) << sv[j].Ngaysinh << sv[j].idXH << endl;
 			}
 			f.close();
+			cout << "----------------------------------------------" << endl;
 			cout << "Nhap ma so sinh vien can xoa : ";
 			char temp2[50];
 			cin.getline(temp2, 50);
@@ -306,6 +322,7 @@ void delete1SV(char HK[]) {
 		}
 	}
 }
+
 void delete1Course(char HK[]) {
 	system("cls");
 	fstream f;
@@ -318,6 +335,7 @@ void delete1Course(char HK[]) {
 	demDong(f, dem);
 	f.close();
 	KhoaHoc* KHoc = new KhoaHoc[dem];
+	cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(20) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
 	f.open(temp1, ios::in);
 	for (int i = 0; i < dem; i++) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 		f.getline(KHoc[i].id, 10, ',');
@@ -328,10 +346,10 @@ void delete1Course(char HK[]) {
 		f.getline(KHoc[i].MaxSV, 4, ',');
 		f.getline(KHoc[i].Thu, 4, ',');
 		f.getline(KHoc[i].ses, 3, '\n');
-		cout << KHoc[i].id << "  " << KHoc[i].TenKH << "  " << KHoc[i].TenLop << "  " << KHoc[i].TenGV << "  " << KHoc[i].STC << "  " << KHoc[i].MaxSV << "  " << KHoc[i].Thu << "  " << KHoc[i].ses;
-		cout << endl;
+		cout << left << setw(15) << KHoc[i].id << left << setw(30) << KHoc[i].TenKH << left << setw(10) << KHoc[i].TenLop << left << setw(20) << KHoc[i].TenGV << left << setw(10) << KHoc[i].STC << left << setw(8) << KHoc[i].MaxSV << left << setw(8) << KHoc[i].Thu << left << setw(7) << KHoc[i].ses << endl;
 	}
 	f.close();
+	cout << "----------------------------------------------" << endl;
 	cout << "Nhap id khoa hoc can xoa : ";
 	char temp[50];
 	cin.ignore();

@@ -3,9 +3,10 @@
 #include<string>
 #include<cstdlib>
 #include<direct.h>
+#include <iomanip>
 using namespace std;
 
-typedef struct GV {
+struct GV {
 	char MS[50];
 	char HoTen[100];
 	char Tuoi[4];
@@ -13,7 +14,7 @@ typedef struct GV {
 	char Nganh[50];
 	char Monday[50];
 };
-typedef struct Nam {
+struct Nam {
 	char STT[3];
 	char Tennam[50];
 	char ngayBD[4];
@@ -23,11 +24,11 @@ typedef struct Nam {
 	char thangKT[4];
 	char namKT[7];
 };
-typedef struct Lop {
+struct Lop {
 	char STT[3];
 	char TenLop[20];
 };
-typedef struct DSSV {
+struct DSSV {
 	char MKSV[20];
 	char STT[3];
 	char MSSV[15];
@@ -42,7 +43,7 @@ typedef struct DSSV {
 	char otherDiem[3];
 };
 
-typedef struct HK {
+struct HK {
 	char HKthu[3];
 	char Nam[20];
 	char ngayBD[4];
@@ -53,7 +54,7 @@ typedef struct HK {
 	char namKT[7];
 };
 
-typedef struct KhoaHoc {
+struct KhoaHoc {
 	char id[10];
 	char TenKH[100];
 	char TenLop[30];

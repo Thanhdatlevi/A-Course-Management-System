@@ -4,10 +4,15 @@ void Sinhvien(fstream& f, char MSSV[], char Ten[], int STT, int soSV) {
 	while (1) {
 		system("cls");// MENU CHINH
 		cout << "1. Thong tin ca nhan" << endl;
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		cout << "2. Doi mat khau" << endl;
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		cout << "3. Xem thoi khoa bieu" << endl;
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		cout << "4. Xem diem" << endl;
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		cout << "5. Dang xuat" << endl;
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		int Chon;
 		cout << "Nhap : "; cin >> Chon;
 		while (Chon != 1 && Chon != 2 && Chon != 3 && Chon != 4 && Chon != 5) {
@@ -25,19 +30,29 @@ void Sinhvien(fstream& f, char MSSV[], char Ten[], int STT, int soSV) {
 		}
 	}
 }
+
 void Giangvien(fstream& f, char TK[], char MK[], int STT, int soGV) {
 	int d = 0, m = 0, y = 0;
 	while (1) {
 		system("cls");// MENU CHINH
 		cout << "1. Thong tin ca nhan" << endl;
+		cout << "----------------------------------------------" << endl;
 		cout << "2. Doi mat khau" << endl;
+		cout << "----------------------------------------------" << endl;
 		cout << "3. Nam hoc" << endl;
+		cout << "----------------------------------------------" << endl;
 		cout << "4. Hoc ki" << endl;
+		cout << "----------------------------------------------" << endl;
 		cout << "5. Xem danh sach sinh vien trong mot lop" << endl;
+		cout << "----------------------------------------------" << endl;
 		cout << "6. Xem danh sach khoa hoc" << endl;
+		cout << "----------------------------------------------" << endl;
 		cout << "7. Quan li diem" << endl;
+		cout << "----------------------------------------------" << endl;
 		cout << "8. Set up thoi gian" << endl;
+		cout << "----------------------------------------------" << endl;
 		cout << "9. Dang xuat" << endl;
+		cout << "----------------------------------------------" << endl;
 		int Chon;
 		cout << "Nhap : "; cin >> Chon;
 		while (Chon != 1 && Chon != 2 && Chon != 3 && Chon != 4 && Chon != 5 && Chon != 6 && Chon != 7 && Chon != 8 && Chon != 9) {

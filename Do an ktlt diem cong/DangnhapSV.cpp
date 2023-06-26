@@ -5,12 +5,15 @@ int Dangnhap() {// CHON DANG NHAP VAO TAI KHOAN SINH VIEN HAY TAI KHOAN GIAO VIE
 	system("cls");
 	int Chon;
 	cout << "Dang nhap" << endl;
+	cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 	cout << "1) Sinh vien" << endl;
 	cout << "2) Giang vien" << endl;
-	cout << "3) Thoat" << endl;
-	cout << "Nhap : " << endl;
+	cout  << "3) Thoat" << endl;
+	cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
+	cout << "Nhap : " ;
 	cin >> Chon;
 	while (Chon != 2 && Chon != 1 && Chon != 3) {
+		cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 		cout << "Nhap loi vui long nhap lai : ";
 		cin >> Chon;
 	}
@@ -40,6 +43,7 @@ void nhapTK() {
 			cout << "Tai khoan : ";
 			cin.ignore();
 			cin.getline(TK, 20);
+			cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 			cout << "Mat Khau : ";
 			cin.getline(MK, 20);
 			f.open("Student.csv", ios::in);
@@ -57,11 +61,13 @@ void nhapTK() {
 				f.getline(SV[k].MKSV, 20, '\n');
 				if (strcmp(TK, SV[k].MSSV) == 0) {
 					while (strcmp(MK, SV[k].MKSV) != 0) {
+						cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 						cout << "Sai mat khau vui long nhap lai mat khau : ";
 						cin.getline(MK, 20);
 					}
 					f.close();
 					int Chon;
+					cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 					cout << "1. Dang nhap                2. Quay lai" << endl;
 					cout << "Nhap : "; cin >> Chon;
 					if (Chon != 1 && Chon != 2) {
@@ -93,6 +99,7 @@ void nhapTK() {
 			cout << "Tai khoan : ";
 			cin.ignore();
 			cin.getline(TK, 20);
+			cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 			cout << "Mat Khau : ";
 			cin.getline(MK, 20);
 			f.open("admin.csv", ios::in);
@@ -105,6 +112,7 @@ void nhapTK() {
 				f.getline(temp, 50);
 				if (strcmp(TK, admin[k].HoTen) == 0) {
 					while (strcmp(MK, admin[k].MS) != 0) {
+						cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 						cout << "Sai mat khau vui long nhap lai mat khau : ";
 						cin.getline(MK, 20);
 					}
@@ -115,9 +123,11 @@ void nhapTK() {
 			k++;
 			f.close();
 			int Chon;
+			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 			cout << "1. Dang nhap                2. Quay lai" << endl;
 			cout << "Nhap : "; cin >> Chon;
 			if (Chon != 1 && Chon != 2) {
+				cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 				cout << "Nhap lai : "; cin >> Chon;
 			}
 			if (Chon == 2) goto DN;
