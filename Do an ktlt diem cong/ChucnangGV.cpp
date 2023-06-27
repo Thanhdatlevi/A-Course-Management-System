@@ -160,10 +160,12 @@ void xemDanhsachLop(fstream& f) {
 							f.getline(sv[i].idXH, 50, '\n');
 							cout << left << setw(8) << sv[i].STT << left << setw(13) << sv[i].MSSV << left << setw(10) << sv[i].Ten << left << setw(20) << sv[i].Ho << left << setw(15) << sv[i].Gioitinh << left << setw(20) << sv[i].Ngaysinh << sv[i].idXH  << endl;
 						}
-						f.close(); 
+						f.close();
+						delete[]sv;
 						break;
 					}
 				}
+				delete[]lop;
 				break;
 			}
 		}
@@ -176,8 +178,10 @@ void xemDanhsachLop(fstream& f) {
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;
 			cout << "Nhap lai : "; cin >> Chon;
 		}
+		delete[]nam;
 		if (Chon == 2) return;
 	}
+
 }
 
 void xemHKvsKH(fstream& f) {
@@ -255,7 +259,7 @@ void xemHKvsKH(fstream& f) {
 						f.close();
 						dem++;
 						KhoaHoc* KHoc = new KhoaHoc[dem];
-						cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(20) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
+						cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
 						f.open(temp1, ios::in);
 						for (int k = 0; k < dem; k++) {
 							f.getline(KHoc[k].id, 10, ',');
@@ -266,7 +270,7 @@ void xemHKvsKH(fstream& f) {
 							f.getline(KHoc[k].MaxSV, 4, ',');
 							f.getline(KHoc[k].Thu, 4, ',');
 							f.getline(KHoc[k].ses, 3, '\n');
-							cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(20) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
+							cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(30) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
 						}
 						f.close();
 						cout << "----------------------------------------------" << endl;
@@ -307,13 +311,20 @@ void xemHKvsKH(fstream& f) {
 									cout << left << setw(8) << sv[k].STT << left << setw(13) << sv[k].MSSV << left << setw(10) << sv[k].Ten << left << setw(20) << sv[k].Ho << left << setw(15) << sv[k].Gioitinh << left << setw(20) << sv[k].Ngaysinh << sv[k].idXH << endl;
 								}
 								f.close();
+								delete[]sv;
 								break;
 							}
-						}break;
+						}
+						delete[]KHoc;
+						break;
 					}
-				}break;
+				}
+				delete[]hk1;
+				break;
 			}
-		}cout << "---------------------------------------------------" << endl;
+		}
+		delete[]nam;
+		cout << "---------------------------------------------------" << endl;
 		cout << "1. Xem danh sach khoa hoc khac            2. Thoat" << endl;
 		cout << "---------------------------------------------------" << endl;
 		cout << "Nhap : ";
@@ -490,6 +501,7 @@ void quanliDiem(fstream& f) {
 		case 2:themDiem(f); break;
 		case 3:xemDiem1KH(f); break;
 		case 4:capnhatDiem(f); break;
+		case 5:xemDiem1Lop(f); break;
 		default: return;
 		}
 	}

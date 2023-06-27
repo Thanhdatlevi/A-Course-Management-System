@@ -154,7 +154,7 @@ void xemTKB(fstream& f, char MSSV[]) {
 							f1.close();
 							dem1++;
 							DSSV* sv = new DSSV[dem1];
-							cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(20) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
+							cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
 							f1.open(temp, ios::in);
 							for (int l = 0; l < dem1; l++) {
 								f1.getline(sv[l].STT, 3, ',');
@@ -165,7 +165,7 @@ void xemTKB(fstream& f, char MSSV[]) {
 								f1.getline(sv[l].Ngaysinh, 20, ',');
 								f1.getline(sv[l].idXH, 20, '\n');
 								if (strcmp(sv[l].MSSV, MSSV) == 0) {
-									cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(20) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
+									cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(30) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
 									break;
 								}
 							}
