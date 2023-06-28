@@ -127,15 +127,20 @@ void nhapDiem(fstream& f) {
 								}
 								f.close();
 								f1.close();
+								delete[]sv;
 								break;
 							}
 						}
 						f.close();
+						delete[]KHoc;
 						break;
 					}
-				}break;
+				}
+				delete[]hk1;
+				break;
 			}
 		}
+		delete[]nam;
 		cout << "----------------------------------------------" << endl;
 		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
 		cout << "----------------------------------------------" << endl;
@@ -270,15 +275,20 @@ void themDiem(fstream& f) {
 								}
 								f.close();
 								f1.close();
+								delete[]sv;
 								break;
 							}
 						}
 						f.close();
+						delete[]KHoc;
 						break;
 					}
-				}break;
+				}
+				delete[]hk1;
+				break;
 			}
 		}
+		delete[]nam;
 		cout << "-----------------------------------------------------" << endl;
 		cout << "1. Them File diem vao khoa hoc khac     2. Quay lai" << endl;
 		cout << "-----------------------------------------------------" << endl;
@@ -409,15 +419,20 @@ void xemDiem1KH(fstream& f) {
 									cout << left << setw(8) << sv[l].STT << left << setw(13) << sv[l].MSSV << left << setw(30) << sv[l].Ho << left << setw(12) << sv[l].totalDiem << left << setw(12) << sv[l].finalDiem << left << setw(12) << sv[l].midDiem  << sv[l].otherDiem << endl;
 								}
 								f.close();
+								delete[]sv;
 								break;
 							}
 						}
 						f.close();
+						delete[]KHoc;
 						break;
 					}
-				}break;
+				}
+				delete[]hk1;
+				break;
 			}
 		}
+		delete[]nam;
 		cout << "----------------------------------------------" << endl;
 		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
 		cout << "----------------------------------------------" << endl;
@@ -564,15 +579,19 @@ void xemDiem1Lop(fstream& f) {
 									cout << left << setw(8) << sv[l].STT << left << setw(13) << sv[l].MSSV << left << setw(30) << sv[l].Ho << left << setw(12) << sv[l].totalDiem << left << setw(12) << sv[l].finalDiem << left << setw(12) << sv[l].midDiem << sv[l].otherDiem << endl;
 								}
 								f.close();
+								delete[]sv;
 								break;
 							}
 						}
 						f.close();
+						delete[]KHoc;
 						break;
 					}
-				}break;
+				}delete[]hk1;
+				break;
 			}
 		}
+		delete[]nam;
 		cout << "----------------------------------------------" << endl;
 		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
 		cout << "----------------------------------------------" << endl;
@@ -724,15 +743,19 @@ void capnhatDiem(fstream& f) {
 									f << sv[l].STT << ',' << sv[l].MSSV << ',' << sv[l].Ho << ',' << sv[l].totalDiem << ',' << sv[l].finalDiem << ',' << sv[l].midDiem << ',' << sv[l].otherDiem << endl;
 								}
 								f.close();
+								delete[]sv;
 								break;
 							}
 						}
 						f.close();
+						delete[]KHoc;
 						break;
 					}
-				}break;
+				}delete[]hk1;
+				break;
 			}
 		}
+		delete[]nam;
 		cout << "----------------------------------------------" << endl;
 		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
 		cout << "----------------------------------------------" << endl;

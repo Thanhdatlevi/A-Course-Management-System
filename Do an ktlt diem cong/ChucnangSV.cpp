@@ -170,13 +170,18 @@ void xemTKB(fstream& f, char MSSV[]) {
 								}
 							}
 							f1.close();
+							delete[]sv;
 						}
 						f.close();
+						delete[]KHoc;
 						break;
 					}
-				}break;
+				}
+				delete[]hk1;
+				break;
 			}
 		}
+		delete[]nam;
 		cout << "----------------------------------------------" << endl;
 		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
 		cout << "----------------------------------------------" << endl;
@@ -304,13 +309,18 @@ void xemDiem(fstream& f, char MSSV[]) {
 								}
 							}
 							f1.close();
+							delete[]sv;
 						}
 						f.close();
+						delete[]KHoc;
 						break;
 					}
-				}break;
+				}
+				delete[]hk1;
+				break;
 			}
 		}
+		delete[]nam;
 		cout << "----------------------------------------------" << endl;
 		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
 		cout << "----------------------------------------------" << endl;

@@ -68,6 +68,7 @@ void addKH(char HK[]) {
 			f1 << sv[i].STT << "," << sv[i].MSSV << "," << sv[i].Ten << "," << sv[i].Ho << "," << sv[i].Gioitinh << "," << sv[i].Ngaysinh << "," << sv[i].idXH << endl;
 		}
 		f1.close();
+		delete[]sv;
 		cout << "----------------------------------------------" << endl;
 		cout << "1. Them khoa hoc             2.Thoat" << endl;// THEM NHIEU KHOA HOC VAO HOC KI
 		cout << "----------------------------------------------" << endl;
@@ -161,6 +162,7 @@ void updateKH(char HK[]) {
 		f << KHoc[i].id << "," << KHoc[i].TenKH << "," << KHoc[i].TenLop << "," << KHoc[i].TenGV << "," << KHoc[i].STC << "," << KHoc[i].MaxSV << "," << KHoc[i].Thu << "," << KHoc[i].ses << endl;
 	}
 	f.close();
+	delete[]KHoc;
 }
 
 void add1SV(char HK[]) {
@@ -240,8 +242,11 @@ void add1SV(char HK[]) {
 			}
 			f << dem + 1 << "," << sv1.MSSV << "," << sv1.Ten << "," << sv1.Ho << "," << sv1.Gioitinh << "," << sv1.Ngaysinh << "," << sv1.idXH << endl;
 			f.close();
+			delete[]sv;
+			break;
 		}
 	}
+	delete[]KHoc;
 }
 
 void delete1SV(char HK[]) {
@@ -318,9 +323,11 @@ void delete1SV(char HK[]) {
 				f << sv[j].STT << "," << sv[j].MSSV << "," << sv[j].Ten << "," << sv[j].Ho << "," << sv[j].Gioitinh << "," << sv[j].Ngaysinh << "," << sv[j].idXH << endl;
 			}
 			f.close();
+			delete[]sv;
 			break;
 		}
 	}
+	delete[]KHoc;
 }
 
 void delete1Course(char HK[]) {
@@ -378,4 +385,5 @@ void delete1Course(char HK[]) {
 		f << KHoc[i].id << "," << KHoc[i].TenKH << "," << KHoc[i].TenLop << "," << KHoc[i].TenGV << "," << KHoc[i].STC << "," << KHoc[i].MaxSV << "," << KHoc[i].Thu << "," << KHoc[i].ses << endl;
 	}
 	f.close();
+	delete[]KHoc;
 }

@@ -113,6 +113,7 @@ void themLop(fstream& f) {
 	f << dem1 + 1 << "," << newclass << endl;
 	f.close();
 	system("pause");
+	delete[]nam;
 }
 
 void them1SV(fstream& f) {// THEM SINH VIEN VAO LOP HOC CO TRUOC DO
@@ -209,12 +210,14 @@ void them1SV(fstream& f) {// THEM SINH VIEN VAO LOP HOC CO TRUOC DO
 					}
 					f << dem + 1 << "," << sv1.MSSV << "," << sv1.Ten << "," << sv1.Ho << "," << sv1.Gioitinh << "," << sv1.Ngaysinh << "," << sv1.idXH << endl;
 					f.close();
+					delete[]sv;
 					break;
 				}
-			}
+			}delete[]lop;
 			break;
 		}
 	}
+	delete[]nam;
 }
 
 void them1DS(fstream& f) {
@@ -321,10 +324,13 @@ void them1DS(fstream& f) {
 						f << sv1[k].STT << "," << sv1[k].MSSV << "," << sv1[k].Ten << "," << sv1[k].Ho << "," << sv1[k].Gioitinh << "," << sv1[k].Ngaysinh << "," << sv1[k].idXH << endl;
 					}
 					f.close();
+					delete[]sv;
 					break;
 				}
-			}
+			}delete[]lop;
 			break;
 		}
 	}
+	delete[]nam;
+	delete[]sv1;
 }

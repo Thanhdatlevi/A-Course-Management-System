@@ -79,7 +79,7 @@ void nhapTK() {
 					break;
 				}
 			}
-
+			delete[]SV;
 		}
 		if (x == 3) { return; }
 		if (x == 2) {
