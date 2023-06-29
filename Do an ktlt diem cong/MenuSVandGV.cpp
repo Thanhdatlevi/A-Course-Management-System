@@ -33,6 +33,7 @@ void Sinhvien(fstream& f, char MSSV[], char Ten[], int STT, int soSV) {
 
 void Giangvien(fstream& f, char TK[], char MK[], int STT, int soGV) {
 	int d = 0, m = 0, y = 0;
+	char temp[100];
 	while (1) {
 		system("cls");// MENU CHINH
 		cout << "1. Thong tin ca nhan" << endl;
@@ -76,7 +77,7 @@ void Giangvien(fstream& f, char TK[], char MK[], int STT, int soGV) {
 				system("pause");
 				continue;
 			}
-			taoHK(f); break;
+			taoHK(f,temp); break;
 		}
 		case 5: {
 			xemDanhsachLop(f); break;

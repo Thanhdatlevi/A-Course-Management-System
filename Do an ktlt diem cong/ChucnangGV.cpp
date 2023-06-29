@@ -336,143 +336,56 @@ void xemHKvsKH(fstream& f) {
 	}
 }
 
-void taoHK(fstream& f) {// TAO HOC KI
+void taoHK(fstream& f, char temp[]) {// TAO HOC KI
 	while (1) {
-	Chonlai:
 		system("cls");
-		HK hk;
-		char temp1[100];
-		cin.ignore();//NHAP THONG TIN HOC KI
-		cout << "Nhap thoi gian bat dau hoc ky" << endl;
-		cout << "Ngay : " << endl;
-		cin.getline(hk.ngayBD, 4);
-		cout << "Thang : " << endl;
-		cin.getline(hk.thangBD, 4);
-		cout << "Nam : " << endl;
-		cin.getline(hk.namBD, 7);
-		cout << "Nhap thoi gian ket thuc hoc ky" << endl;
-		cout << "Ngay : " << endl;
-		cin.getline(hk.ngayKT, 4);
-		cout << "Thang : " << endl;
-		cin.getline(hk.thangKT, 4);
-		cout << "Nam : " << endl;
-		cin.getline(hk.namKT, 7);
-		if (stoi(hk.thangBD) == 9) strcpy_s(hk.HKthu, "1");
-		else if (stoi(hk.thangBD) == 3) strcpy_s(hk.HKthu, "2");
-		else strcpy_s(hk.HKthu, "3");
-		system("cls");
-		int dem = 0;
-		f.open("Namhoc.csv", ios::in);
-		demDong(f, dem);
-		f.close();
-		Nam* nam = new Nam[dem];
-		cout << left << setw(8) << "STT" << "Nam" << endl;
-		f.open("Namhoc.csv", ios::in);
-		for (int i = 0; i < dem; i++) {
-			f.getline(nam[i].STT, 3, ',');
-			f.getline(nam[i].Tennam, 15, ',');
-			char a[100];
-			f.getline(a, 100, '\n');
-			cout << left << setw(8) << nam[i].STT << nam[i].Tennam << endl;
-		}
-		f.close();
+		cout << "1. Tao hoc ki" << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "2. Xem danh sach khoa hoc" << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "3. Cap nhap danh sach" << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "4. Them 1 sinh vien vao khoa hoc" << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "5. Xoa 1 sinh vien khoi khoa hoc" << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "6. Xoa 1 khoa hoc" << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "7. Quay lai" << endl;
+		cout << "----------------------------------------------" << endl;
 		int Chon;
-		cout << "Chon nam hoc cua hoc ky : " << endl;// CHON NAM DE THEM HOC KI VAO
-		cin >> Chon;
-		for (int i = 0; i < dem; i++) {
-			if (stoi(nam[i].STT) == Chon) {
-				strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
-				strcat_s(temp1, "\\");
-				strcat_s(temp1, nam[i].Tennam);
-				strcat_s(temp1, "_HK");
-				strcat_s(temp1, "\\");
-				strcat_s(temp1, nam[i].Tennam);
-				strcat_s(temp1, "_HK.csv");
-				f.open(temp1, ios::in);
-				dem = 0;
-				demDong(f, dem);
-				f.close();
-				f.open(temp1, ios::in);
-				HK* hk1 = new HK[dem];
-				for (int j = 0; j < dem; j++) {// KIEM TRA XEM HOC KI DO DA CO TRONG NAM HOC CHUA
-					f.getline(hk1[j].HKthu, 3, ',');
-					f.getline(hk1[j].ngayBD, 4, ',');
-					f.getline(hk1[j].thangBD, 4, ',');
-					f.getline(hk1[j].namBD, 7, ',');
-					f.getline(hk1[j].ngayKT, 4, ',');
-					f.getline(hk1[j].thangKT, 4, ',');
-					f.getline(hk1[j].namKT, 7, '\n');
-					if (stoi(hk1[j].HKthu) == stoi(hk.HKthu)) {
-						cout << "Hoc ky " << hk.HKthu << " da ton tai trong nam hoc" << endl;
-						f.close();
-						system("pause");
-						goto Chonlai;
-					}
-				}
-				f.close();
-				f.open(temp1, ios::out);
-				for (int j = 0; j < dem; j++) {
-					f << hk1[j].HKthu << "," << hk1[j].ngayBD << "," << hk1[j].thangBD << "," << hk1[j].namBD << "," << hk1[j].ngayKT << "," << hk1[j].thangKT << "," << hk1[j].namKT << endl;
-				}
-				f << hk.HKthu << "," << hk.ngayBD << "," << hk.thangBD << "," << hk.namBD << "," << hk.ngayKT << "," << hk.thangKT << "," << hk.namKT << endl;
-				f.close();
-				strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
-				strcat_s(temp1, "\\");
-				strcat_s(temp1, nam[i].Tennam);
-				strcat_s(temp1, "_HK");
-				strcat_s(temp1, "\\");
-				strcat_s(temp1, nam[i].Tennam);
-				strcat_s(temp1, "_HK");
-				strcat_s(temp1, hk.HKthu);
-				_mkdir(temp1);
-				addKH(temp1);// THEM CAC KHÔA HOC VAO HOC KI
-				while (1) {
-					system("cls");
-					cout << "1. Xem danh sach khoa hoc" << endl;
-					cout << "----------------------------------------------" << endl;
-					cout << "2. Cap nhap danh sach" << endl;
-					cout << "----------------------------------------------" << endl;
-					cout << "3. Them 1 sinh vien vao khoa hoc" << endl;
-					cout << "----------------------------------------------" << endl;
-					cout << "4. Xoa 1 sinh vien khoi khoa hoc" << endl;
-					cout << "----------------------------------------------" << endl;
-					cout << "5. Xoa 1 khoa hoc" << endl;
-					cout << "----------------------------------------------" << endl;
-					cout << "6. Quay lai" << endl;
-					cout << "----------------------------------------------" << endl;
-					int Chon;
-					cout << "Nhap : "; cin >> Chon;
-					switch (Chon) {
-					case 1: {
-						listKH(temp1);
-						system("pause");
-						break;
-					}
-					case 2: {
-						updateKH(temp1);
-						break;
-					}
-					case 3: {
-						add1SV(temp1);
-						break;
-					}
-					case 4: {
-						delete1SV(temp1);
-						break;
-					}
-					case 5: {
-						delete1Course(temp1);
-						break;
-					}
-					default: {
-						return;
-					}
-					}
-				}break;
-			}
+		cout << "Nhap : "; cin >> Chon;
+		switch (Chon) {
+		case 1: {
+			tao1HK(f, temp);
+			break;
+		}
+		case 2: {
+			listKH(temp);
+			system("pause");
+			break;
+		}
+		case 3: {
+			updateKH(temp);
+			break;
+		}
+		case 4: {
+			add1SV(temp);
+			break;
+		}
+		case 5: {
+			delete1SV(temp);
+			break;
+		}
+		case 6: {
+			delete1Course(temp);
+			break;
+		}
+		default: {
+			return;
 		}
 
-		return;
+		}
 	}
 }
 
