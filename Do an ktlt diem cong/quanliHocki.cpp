@@ -103,7 +103,7 @@ Chonlai:
 	cout << "Nam : " << endl;
 	cin.getline(hk.namKT, 7);
 	if (stoi(hk.thangBD) == 9) strcpy_s(hk.HKthu, "1");
-	else if (stoi(hk.thangBD) == 3) strcpy_s(hk.HKthu, "2");
+	else if (stoi(hk.thangBD) == 1) strcpy_s(hk.HKthu, "2");
 	else strcpy_s(hk.HKthu, "3");
 	system("cls");
 	int dem = 0;
@@ -122,6 +122,7 @@ Chonlai:
 	}
 	f.close();
 	int Chon;
+	cout << "----------------------------------------------" << endl;
 	cout << "Chon nam hoc cua hoc ky : " << endl;// CHON NAM DE THEM HOC KI VAO
 	cin >> Chon;
 	for (int i = 0; i < dem; i++) {

@@ -13,7 +13,7 @@ void ThongtinGiangvien(fstream& f, char TK[], int STT) {// IN RA THONG TIN KHI C
 		f.getline(Ten[i].Monday, 50, '\n');
 	}
 	cout << left << setw(20) << "Ho ten" << left << setw(10) << "Tuoi" << left << setw(15) << "Gioi tinh" << left << setw(20) << "Nganh" << left << setw(20) << "Mon hoc" << endl;
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+	cout << "----------------------------------------------------------------------------------" << endl;
 	cout << left << setw(20) << Ten[STT - 1].HoTen << left << setw(10) << Ten[STT - 1].Tuoi << left << setw(15) << Ten[STT - 1].Gioitinh << left << setw(20)<< Ten[STT - 1].Nganh << left << setw(20) << Ten[STT - 1].Monday << endl;
 	f.close();
 	delete[]Ten;
@@ -50,8 +50,10 @@ void doiMK(fstream& f, char TK[], int STT, int soGV) {
 		else f << temp << "," << Ten[i].HoTen << "," << Ten[i].Tuoi << "," << Ten[i].Gioitinh << "," << Ten[i].Nganh << "," << Ten[i].Monday << endl;
 	}
 	cout << endl;
+	cout << "------------------------------------------" << endl;
 	cout << "Da thay doi mat khau thanh cong" << endl;
 	f.close();
+	cout << "------------------------------------------" << endl;
 	delete[]Ten;
 	cout << "An Enter de quay lai" << endl;
 	system("pause");
@@ -205,7 +207,7 @@ void xemHKvsKH(fstream& f) {
 		}
 		f.close();
 		cout << "----------------------------------------------" << endl;
-		cout << "Chon nien khoa de xem danh sach lop : " << endl;
+		cout << "Chon nien khoa de xem danh sach khoa hoc : " << endl;
 		int Chon;
 		cout << "----------------------------------------------" << endl;
 		cin >> Chon;

@@ -24,7 +24,7 @@ void nhapDiem(fstream& f) {
 		}
 		f.close();
 		cout << "----------------------------------------------" << endl;
-		cout << "Chon nien khoa de xem danh sach lop : " << endl;
+		cout << "Chon nien khoa lay danh sach khoa hoc : " << endl;
 		int Chon;
 		cin >> Chon;
 		char temp1[100];
@@ -56,7 +56,7 @@ void nhapDiem(fstream& f) {
 				}
 				f.close();
 				cout << "----------------------------------------------" << endl;
-				cout << "Hoc ki de xem khoa hoc : " << endl;
+				cout << "Hoc ki de lay danh sach khoa hoc : " << endl;
 				cin >> Chon;
 				for (int j = 0; j < dem; j++) {
 					if (stoi(hk1[j].HKthu) == Chon) {
@@ -90,7 +90,7 @@ void nhapDiem(fstream& f) {
 						}
 						f.close();
 						cout << "----------------------------------------------" << endl;
-						cout << "Nhap id khoa hoc can them diem : ";
+						cout << "Nhap id khoa hoc can lay danh sach : ";
 						cin.ignore();
 						cin.getline(temp1, 50);
 						for (int k = 0; k < dem; k++) {
@@ -317,7 +317,7 @@ void xemDiem1KH(fstream& f) {
 		}
 		f.close();
 		cout << "----------------------------------------------" << endl;
-		cout << "Chon nien khoa de xem danh sach lop : " << endl;
+		cout << "Chon nien khoa de xem diem : " << endl;
 		int Chon;
 		cin >> Chon;
 		char temp1[100];
@@ -349,7 +349,7 @@ void xemDiem1KH(fstream& f) {
 				}
 				f.close();
 				cout << "----------------------------------------------" << endl;
-				cout << "Hoc ki de xem khoa hoc : " << endl;
+				cout << "Hoc ki de xem diem : " << endl;
 				cin >> Chon;
 				for (int j = 0; j < dem; j++) {
 					if (stoi(hk1[j].HKthu) == Chon) {
@@ -461,7 +461,7 @@ void xemDiem1Lop(fstream& f) {
 		}
 		f.close();
 		cout << "----------------------------------------------" << endl;
-		cout << "Chon nien khoa de xem danh sach lop : " << endl;
+		cout << "Chon nien khoa de xem diem theo lop : " << endl;
 		int Chon;
 		cin >> Chon;
 		char temp1[100];
@@ -493,7 +493,7 @@ void xemDiem1Lop(fstream& f) {
 				}
 				f.close();
 				cout << "----------------------------------------------" << endl;
-				cout << "Hoc ki de xem khoa hoc : " << endl;
+				cout << "Hoc ki de xem diem : " << endl;
 				cin >> Chon;
 				for (int j = 0; j < dem; j++) {
 					if (stoi(hk1[j].HKthu) == Chon) {
@@ -620,7 +620,7 @@ void capnhatDiem(fstream& f) {
 		}
 		f.close();
 		cout << "----------------------------------------------" << endl;
-		cout << "Chon nien khoa de xem danh sach lop : " << endl;
+		cout << "Chon nien khoa de cap nhat : " << endl;
 		int Chon;
 		cin >> Chon;
 		char temp1[100];
@@ -652,7 +652,7 @@ void capnhatDiem(fstream& f) {
 				}
 				f.close();
 				cout << "----------------------------------------------" << endl;
-				cout << "Hoc ki de xem khoa hoc : " << endl;
+				cout << "Chon hoc ki de cap nhat : " << endl;
 				cin >> Chon;
 				for (int j = 0; j < dem; j++) {
 					if (stoi(hk1[j].HKthu) == Chon) {
@@ -686,7 +686,7 @@ void capnhatDiem(fstream& f) {
 						}
 						f.close();
 						cout << "----------------------------------------------" << endl;
-						cout << "Nhap id khoa hoc can them diem : ";
+						cout << "Nhap id khoa hoc can cap nhat diem : ";
 						cin.ignore();
 						cin.getline(temp1, 50);
 						for (int k = 0; k < dem; k++) {

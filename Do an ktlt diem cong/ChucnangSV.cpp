@@ -16,6 +16,7 @@ void ThongtinSinhvien(fstream& f, char MSSV[], int STT) {// IN RA THONG TIN KHI 
 	}cout << left << setw(8) << sv[STT].STT << left << setw(13) << sv[STT].MSSV << left << setw(10) << sv[STT].Ten << left << setw(20) << sv[STT].Ho << left << setw(15) << sv[STT].Gioitinh << left << setw(20) << sv[STT].Ngaysinh << sv[STT].idXH << endl;
 	f.close();
 	delete[]sv;
+	cout << "------------------------------------" << endl;
 	cout << "An Enter de quay lai" << endl;
 	system("pause");
 }
@@ -43,9 +44,11 @@ void doiMKSV(fstream& f, char MSSV[], int STT, int soSV) {
 		if (j != STT) f << sv[j].STT << "," << sv[j].MSSV << "," << sv[j].Ten << "," << sv[j].Ho << "," << sv[j].Gioitinh << "," << sv[j].Ngaysinh << "," << sv[j].idXH << "," << sv[j].MKSV << endl;
 		else f << sv[j].STT << "," << sv[j].MSSV << "," << sv[j].Ten << "," << sv[j].Ho << "," << sv[j].Gioitinh << "," << sv[j].Ngaysinh << "," << sv[j].idXH << "," << temp << endl;
 	}
+	cout << "------------------------------------" << endl;
 	cout << "Da thay doi mat khau thanh cong" << endl;
 	f.close();
 	delete[]sv;
+	cout << "------------------------------------" << endl;
 	cout << "An Enter de quay lai" << endl;
 	system("pause");
 }
@@ -72,7 +75,7 @@ void xemTKB(fstream& f, char MSSV[]) {
 		}
 		f.close();
 		cout << "----------------------------------------------" << endl;
-		cout << "Chon nien khoa de xem danh sach lop : " << endl;
+		cout << "Chon nien khoa de xem thoi khoa bieu : " << endl;
 		int Chon;
 		cin >> Chon;
 		char temp1[100];
@@ -104,7 +107,7 @@ void xemTKB(fstream& f, char MSSV[]) {
 				}
 				f.close();
 				cout << "----------------------------------------------" << endl;
-				cout << "Hoc ki de xem khoa hoc : " << endl;
+				cout << "Hoc ki : " << endl;
 				cin >> Chon;
 				for (int j = 0; j < dem; j++) {
 					if (stoi(hk1[j].HKthu) == Chon) {
@@ -212,7 +215,7 @@ void xemDiem(fstream& f, char MSSV[]) {
 		}
 		f.close();
 		cout << "----------------------------------------------" << endl;
-		cout << "Chon nien khoa de xem danh sach lop : " << endl;
+		cout << "Chon nien khoa de xem diem : " << endl;
 		int Chon;
 		cin >> Chon;
 		char temp1[100];
@@ -244,7 +247,7 @@ void xemDiem(fstream& f, char MSSV[]) {
 				}
 				f.close();
 				cout << "----------------------------------------------" << endl;
-				cout << "Hoc ki de xem khoa hoc : " << endl;
+				cout << "Hoc ki : " << endl;
 				cin >> Chon;
 				for (int j = 0; j < dem; j++) {
 					if (stoi(hk1[j].HKthu) == Chon) {

@@ -64,6 +64,7 @@ void Giangvien(fstream& f, char TK[], char MK[], int STT, int soGV) {
 		case 2:doiMK(f, TK, STT, soGV); break;
 		case 3: {
 			if (d != 1 && m != 9) {
+				cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 				cout << "Chi co the tao hoc ky vao dau nam (ngay 1 thang 9)" << endl;
 				system("pause");
 				continue;
@@ -73,7 +74,8 @@ void Giangvien(fstream& f, char TK[], char MK[], int STT, int soGV) {
 		}
 		case 4: {
 			if (m != 9 && m != 2 && m != 6) {
-				cout << "Chi co the tao hoc ky vao dau hoc ki (thang 9, thang 3, thang 6)" << endl;
+				cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+				cout << "Chi co the tao hoc ky vao dau hoc ki (thang 9, thang 1, thang 6)" << endl;
 				system("pause");
 				continue;
 			}

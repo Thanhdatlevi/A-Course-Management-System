@@ -7,7 +7,9 @@ int Dangnhap() {// CHON DANG NHAP VAO TAI KHOAN SINH VIEN HAY TAI KHOAN GIAO VIE
 	cout << "Dang nhap" << endl;
 	cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 	cout << "1) Sinh vien" << endl;
+	cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 	cout << "2) Giang vien" << endl;
+	cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 	cout  << "3) Thoat" << endl;
 	cout << "~~~~~~~~~~~~~~~~~~~~" << endl;
 	cout << "Nhap : " ;
