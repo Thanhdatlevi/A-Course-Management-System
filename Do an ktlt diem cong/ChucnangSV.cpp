@@ -64,17 +64,19 @@ void xemTKB(fstream& f, char MSSV[]) {
 		Nam* nam = new Nam[dem];
 		f.close();
 		cout << left << setw(8) << "STT" << "Nam" << endl;
+		cout << "----------------------------------------------" << endl;
 		f.open("Namhoc.csv", ios::in);
 		char temp[100];
-		for (int i = 0; i < dem; i++) {// DANH SACH CAC NAM DE LUA CHON
+		for (int i = 0; i < dem; i++) {// DANH SACH NAM HOC
 			f.getline(nam[i].STT, 3, ',');
 			f.getline(nam[i].Tennam, 15, ',');
 			char a[100];
 			f.getline(a, 100, '\n');
 			cout << left << setw(8) << nam[i].STT << nam[i].Tennam << endl;
+			cout << "----------------------------------------------" << endl;
 		}
 		f.close();
-		cout << "----------------------------------------------" << endl;
+		cout << "----------------------------------------------" << endl;// CHON NAM HOC
 		cout << "Chon nien khoa de xem thoi khoa bieu : " << endl;
 		int Chon;
 		cin >> Chon;
@@ -93,9 +95,10 @@ void xemTKB(fstream& f, char MSSV[]) {
 				demDong(f, dem);
 				f.close();
 				cout << left << setw(8) << "STT" << left << setw(8) << "Hoc ki" << endl;
+				cout << "----------------------------------------------" << endl;
 				f.open(temp1, ios::in);
 				HK* hk1 = new HK[dem];
-				for (int j = 0; j < dem; j++) {// KIEM TRA XEM HOC KI DO DA CO TRONG NAM HOC CHUA
+				for (int j = 0; j < dem; j++) {
 					f.getline(hk1[j].HKthu, 3, ',');
 					f.getline(hk1[j].ngayBD, 4, ',');
 					f.getline(hk1[j].thangBD, 4, ',');
@@ -103,10 +106,11 @@ void xemTKB(fstream& f, char MSSV[]) {
 					f.getline(hk1[j].ngayKT, 4, ',');
 					f.getline(hk1[j].thangKT, 4, ',');
 					f.getline(hk1[j].namKT, 7, '\n');
-					cout << left << setw(8) << hk1[j].HKthu << "Hoc ki thu " << hk1[j].HKthu << endl;
+					cout << left << setw(8) << hk1[j].HKthu << "Hoc ki thu " << hk1[j].HKthu << endl;// DANH SACH HOC KI
+					cout << "----------------------------------------------" << endl;
 				}
 				f.close();
-				cout << "----------------------------------------------" << endl;
+				cout << "----------------------------------------------" << endl;// NHAP HOC KI CAN XEM TKB
 				cout << "Hoc ki : " << endl;
 				cin >> Chon;
 				for (int j = 0; j < dem; j++) {
@@ -125,6 +129,8 @@ void xemTKB(fstream& f, char MSSV[]) {
 						dem = 0;
 						demDong(f, dem);
 						f.close();
+						cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
+						cout << "----------------------------------------------" << endl;
 						KhoaHoc* KHoc = new KhoaHoc[dem];
 						f.open(temp1, ios::in);
 						for (int k = 0; k < dem; k++) {
@@ -157,7 +163,6 @@ void xemTKB(fstream& f, char MSSV[]) {
 							f1.close();
 							dem1++;
 							DSSV* sv = new DSSV[dem1];
-							cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
 							f1.open(temp, ios::in);
 							for (int l = 0; l < dem1; l++) {
 								f1.getline(sv[l].STT, 3, ',');
@@ -169,6 +174,7 @@ void xemTKB(fstream& f, char MSSV[]) {
 								f1.getline(sv[l].idXH, 20, '\n');
 								if (strcmp(sv[l].MSSV, MSSV) == 0) {
 									cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(30) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
+									cout << "----------------------------------------------" << endl;
 									break;
 								}
 							}
@@ -204,17 +210,19 @@ void xemDiem(fstream& f, char MSSV[]) {
 		Nam* nam = new Nam[dem];
 		f.close();
 		cout << left << setw(8) << "STT" << "Nam" << endl;
+		cout << "----------------------------------------------" << endl;
 		f.open("Namhoc.csv", ios::in);
 		char temp[100];
-		for (int i = 0; i < dem; i++) {// DANH SACH CAC NAM DE LUA CHON
+		for (int i = 0; i < dem; i++) {// DANH SACH CAC NAM
 			f.getline(nam[i].STT, 3, ',');
 			f.getline(nam[i].Tennam, 15, ',');
 			char a[100];
 			f.getline(a, 100, '\n');
 			cout << left << setw(8) << nam[i].STT << nam[i].Tennam << endl;
+			cout << "----------------------------------------------" << endl;
 		}
 		f.close();
-		cout << "----------------------------------------------" << endl;
+		cout << "----------------------------------------------" << endl;// CHON NAM XEM DIEM
 		cout << "Chon nien khoa de xem diem : " << endl;
 		int Chon;
 		cin >> Chon;
@@ -233,9 +241,10 @@ void xemDiem(fstream& f, char MSSV[]) {
 				demDong(f, dem);
 				f.close();
 				cout << left << setw(8) << "STT" << left << setw(8) << "Hoc ki" << endl;
+				cout << "----------------------------------------------" << endl;
 				f.open(temp1, ios::in);
 				HK* hk1 = new HK[dem];
-				for (int j = 0; j < dem; j++) {// KIEM TRA XEM HOC KI DO DA CO TRONG NAM HOC CHUA
+				for (int j = 0; j < dem; j++) {
 					f.getline(hk1[j].HKthu, 3, ',');
 					f.getline(hk1[j].ngayBD, 4, ',');
 					f.getline(hk1[j].thangBD, 4, ',');
@@ -243,10 +252,11 @@ void xemDiem(fstream& f, char MSSV[]) {
 					f.getline(hk1[j].ngayKT, 4, ',');
 					f.getline(hk1[j].thangKT, 4, ',');
 					f.getline(hk1[j].namKT, 7, '\n');
-					cout << left << setw(8) << hk1[j].HKthu << "Hoc ki thu " << hk1[j].HKthu << endl;
+					cout << left << setw(8) << hk1[j].HKthu << "Hoc ki thu " << hk1[j].HKthu << endl;// DANH SACH HOC KI
+					cout << "----------------------------------------------" << endl;
 				}
 				f.close();
-				cout << "----------------------------------------------" << endl;
+				cout << "----------------------------------------------" << endl;// CHON HOC KI XEM DIEM
 				cout << "Hoc ki : " << endl;
 				cin >> Chon;
 				for (int j = 0; j < dem; j++) {
@@ -297,6 +307,7 @@ void xemDiem(fstream& f, char MSSV[]) {
 							dem1++;
 							DSSV* sv = new DSSV[dem1];
 							cout << left << setw(30) << "Khoa hoc" << "Diem" << endl;
+							cout << "----------------------------------------------" << endl;
 							f1.open(temp, ios::in);
 							for (int l = 0; l < dem1; l++) {
 								f1.getline(sv[l].STT, 3, ',');
@@ -308,6 +319,7 @@ void xemDiem(fstream& f, char MSSV[]) {
 								f1.getline(sv[l].otherDiem, 3, '\n');
 								if (strcmp(sv[l].MSSV, MSSV) == 0) {
 									cout << left << setw(30) << KHoc[k].TenKH << sv[l].totalDiem<<endl;
+									cout << "----------------------------------------------" << endl;
 								break;
 								}
 							}

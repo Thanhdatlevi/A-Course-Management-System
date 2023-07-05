@@ -1,7 +1,7 @@
 #include"System.h"
 
 void tao1nam(fstream& f) {// TAO MOT NAM HOC
-	Nam nam, nam1;
+	Nam nam;
 	fstream f1;
 	cout << "Nhap vao nien khoa (xx-xx) : ";
 	cin.ignore();
@@ -139,6 +139,7 @@ void them1SV(fstream& f) {// THEM SINH VIEN VAO LOP HOC CO TRUOC DO
 	f.close();
 	Nam* nam = new Nam[dem];
 	cout << left << setw(8) << "STT" << "Nam" << endl;
+	cout << "----------------------------------------------" << endl;
 	f.open("Namhoc.csv", ios::in);// CHON NAM HOC DE THEM VAO
 	for (int i = 0; i < dem; i++) {
 		f.getline(nam[i].STT, 3, ',');
@@ -146,6 +147,7 @@ void them1SV(fstream& f) {// THEM SINH VIEN VAO LOP HOC CO TRUOC DO
 		char a[100];
 		f.getline(a, 100, '\n');
 		cout << left << setw(8) << nam[i].STT << nam[i].Tennam << endl;
+		cout << "----------------------------------------------" << endl;
 	}
 	f.close();
 	int Chon;
@@ -166,12 +168,14 @@ void them1SV(fstream& f) {// THEM SINH VIEN VAO LOP HOC CO TRUOC DO
 			demDong(f, dem);
 			f.close();
 			cout << left << setw(8) << "STT" << "Lop" << endl;
+			cout << "----------------------------------------------" << endl;
 			f.open(temp1, ios::in);
 			Lop* lop = new Lop[dem];
 			for (int j = 0; j < dem; j++) {// CHON LOP HOC TRONG NAM HOC DA CHON TRUOC DO DE THEM VAO
 				f.getline(lop[j].STT, 3, ',');
 				f.getline(lop[j].TenLop, 20, '\n');
 				cout << left << setw(8) << lop[j].STT << lop[j].TenLop << endl;
+				cout << "----------------------------------------------" << endl;
 			}
 			f.close();
 			cin.ignore();
@@ -250,6 +254,7 @@ void them1DS(fstream& f) {
 	f.close();
 	Nam* nam = new Nam[dem];
 	cout << left << setw(8) << "STT" << "Nam" << endl;
+	cout << "----------------------------------------------" << endl;
 	f.open("Namhoc.csv", ios::in);// CHON NAM HOC DE THEM VAO
 	for (i = 0; i < dem; i++) {
 		f.getline(nam[i].STT, 3, ',');
@@ -257,6 +262,7 @@ void them1DS(fstream& f) {
 		char a[100];
 		f.getline(a, 100, '\n');
 		cout << left << setw(8) << nam[i].STT << nam[i].Tennam << endl;
+		cout << "----------------------------------------------" << endl;
 	}
 	f.close();
 	int Chon;
@@ -277,12 +283,14 @@ void them1DS(fstream& f) {
 			demDong(f, dem);
 			f.close();
 			cout << left << setw(8) << "STT" << "Lop" << endl;
+			cout << "----------------------------------------------" << endl;
 			f.open(temp1, ios::in);
 			Lop* lop = new Lop[dem];
 			for (int j = 0; j < dem; j++) {// CHON LOP HOC TRONG NAM HOC DA CHON TRUOC DO DE THEM VAO
 				f.getline(lop[j].STT, 3, ',');
 				f.getline(lop[j].TenLop, 20, '\n');
 				cout << left << setw(8) << lop[j].STT << lop[j].TenLop << endl;
+				cout << "----------------------------------------------" << endl;
 			}
 			f.close();
 			cin.ignore();

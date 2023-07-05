@@ -25,7 +25,7 @@ void Sinhvien(fstream& f, char MSSV[], char Ten[], int STT, int soSV) {
 			xemTKB(f, MSSV);
 			break;
 		}
-		case 4: xemDiem(f, MSSV); break;
+		case 4: {xemDiem(f, MSSV); break; }
 		default: return;
 		}
 	}
