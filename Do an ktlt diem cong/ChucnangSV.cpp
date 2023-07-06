@@ -3,6 +3,7 @@
 void ThongtinSinhvien(fstream& f, char MSSV[], int STT) {// IN RA THONG TIN KHI CHON XEM THONG TIN
 	DSSV* sv = new DSSV[STT + 1];
 	cout << left << setw(8) << "STT" << left << setw(13) << "MSSV" << left << setw(10) << "Ho" << left << setw(20) << "Ten" << left << setw(15) << "Gioi tinh" << left << setw(20) << "Ngay sinh" << "ID Xa hoi" << endl;
+	cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	f.open("Student.csv", ios::in);
 	for (int i = 0; i < STT + 1; i++) {
 		f.getline(sv[i].STT, 3, ',');
@@ -130,7 +131,7 @@ void xemTKB(fstream& f, char MSSV[]) {
 						demDong(f, dem);
 						f.close();
 						cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
-						cout << "----------------------------------------------" << endl;
+						cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						KhoaHoc* KHoc = new KhoaHoc[dem];
 						f.open(temp1, ios::in);
 						for (int k = 0; k < dem; k++) {
@@ -174,7 +175,7 @@ void xemTKB(fstream& f, char MSSV[]) {
 								f1.getline(sv[l].idXH, 20, '\n');
 								if (strcmp(sv[l].MSSV, MSSV) == 0) {
 									cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(30) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
-									cout << "----------------------------------------------" << endl;
+									cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 									break;
 								}
 							}
@@ -259,6 +260,8 @@ void xemDiem(fstream& f, char MSSV[]) {
 				cout << "----------------------------------------------" << endl;// CHON HOC KI XEM DIEM
 				cout << "Hoc ki : " << endl;
 				cin >> Chon;
+				cout << left << setw(30) << "Khoa hoc" << "Diem" << endl;
+				cout << "----------------------------------------------" << endl;
 				for (int j = 0; j < dem; j++) {
 					if (stoi(hk1[j].HKthu) == Chon) {
 						strcpy_s(temp1, strlen(nam[i].Tennam) + 1, nam[i].Tennam);
@@ -306,8 +309,6 @@ void xemDiem(fstream& f, char MSSV[]) {
 							f1.close();
 							dem1++;
 							DSSV* sv = new DSSV[dem1];
-							cout << left << setw(30) << "Khoa hoc" << "Diem" << endl;
-							cout << "----------------------------------------------" << endl;
 							f1.open(temp, ios::in);
 							for (int l = 0; l < dem1; l++) {
 								f1.getline(sv[l].STT, 3, ',');

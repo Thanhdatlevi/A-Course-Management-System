@@ -13,7 +13,7 @@ void ThongtinGiangvien(fstream& f, char TK[], int STT) {// IN RA THONG TIN KHI C
 		f.getline(Ten[i].Monday, 50, '\n');
 	}
 	cout << left << setw(20) << "Ho ten" << left << setw(10) << "Tuoi" << left << setw(15) << "Gioi tinh" << left << setw(20) << "Nganh" << left << setw(20) << "Mon hoc" << endl;
-	cout << "----------------------------------------------------------------------------------" << endl;
+	cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	cout << left << setw(20) << Ten[STT - 1].HoTen << left << setw(10) << Ten[STT - 1].Tuoi << left << setw(15) << Ten[STT - 1].Gioitinh << left << setw(20)<< Ten[STT - 1].Nganh << left << setw(20) << Ten[STT - 1].Monday << endl;
 	f.close();
 	delete[]Ten;
@@ -96,7 +96,7 @@ void xemDanhsachLop(fstream& f) {
 		Nam* nam = new Nam[dem];
 		f.close();
 		f.open("Namhoc.csv", ios::in);
-		cout<<left<<setw(8) << "STT" << "Nam"<<endl;
+		cout << left << setw(8) << "STT" << "Nam" << endl;
 		cout << "----------------------------------------------" << endl;
 		for (int i = 0; i < dem; i++) {// DANH SACH CAC NAM
 			f.getline(nam[i].STT, 3, ',');
@@ -108,7 +108,7 @@ void xemDanhsachLop(fstream& f) {
 		}
 		f.close();
 		cin.ignore();
-		cout << "----------------------------------------------"<<endl;// CHON NAM HOC DE XEM DANH SACH LOP
+		cout << "----------------------------------------------" << endl;// CHON NAM HOC DE XEM DANH SACH LOP
 		cout << "Chon nien khoa de xem danh sach lop : " << endl;
 		int Chon;
 		cin >> Chon;
@@ -127,12 +127,12 @@ void xemDanhsachLop(fstream& f) {
 				f.close();
 				f.open(temp1, ios::in);
 				Lop* lop = new Lop[dem];
-				cout << left << setw(8) << "STT" << "Lop"<<endl;
+				cout << left << setw(8) << "STT" << "Lop" << endl;
 				cout << "----------------------------------------------" << endl;
 				for (int j = 0; j < dem; j++) {// DANH SACH CAC LOP
 					f.getline(lop[j].STT, 3, ',');
 					f.getline(lop[j].TenLop, 20, '\n');
-					cout << left << setw(8) << lop[j].STT<< lop[j].TenLop << endl;
+					cout << left << setw(8) << lop[j].STT << lop[j].TenLop << endl;
 					cout << "----------------------------------------------" << endl;
 				}
 				f.close();
@@ -154,41 +154,39 @@ void xemDanhsachLop(fstream& f) {
 						f.close();
 						f.open(temp1, ios::in);
 						DSSV* sv = new DSSV[dem];
-						cout << left << setw(8) << "STT" << left << setw(13) << "MSSV" << left << setw(10) << "Ho" << left << setw(20) << "Ten" << left << setw(15) << "Gioi tinh" << left << setw(20) << "Ngay sinh"  << "ID Xa hoi" << endl;
-						cout << "----------------------------------------------" << endl;
-						for (int i = 0; i < dem; i++) { // IN THONG TIN CUA MOT LOP
-							f.getline(sv[i].STT, 3, ',');
-							f.getline(sv[i].MSSV, 15, ',');
-							f.getline(sv[i].Ten, 20, ',');
-							f.getline(sv[i].Ho, 20, ',');
-							f.getline(sv[i].Gioitinh, 5, ',');
-							f.getline(sv[i].Ngaysinh, 20, ',');
-							f.getline(sv[i].idXH, 50, '\n');
-							cout << left << setw(8) << sv[i].STT << left << setw(13) << sv[i].MSSV << left << setw(10) << sv[i].Ten << left << setw(20) << sv[i].Ho << left << setw(15) << sv[i].Gioitinh << left << setw(20) << sv[i].Ngaysinh << sv[i].idXH  << endl;
-							cout << "----------------------------------------------" << endl;
+						cout << left << setw(8) << "STT" << left << setw(13) << "MSSV" << left << setw(10) << "Ho" << left << setw(20) << "Ten" << left << setw(15) << "Gioi tinh" << left << setw(20) << "Ngay sinh" << "ID Xa hoi" << endl;
+						cout << "----------------------------------------------------------------------------------------------------------------" << endl;
+						for (int k = 0; k < dem; k++) { // IN THONG TIN CUA MOT LOP
+							f.getline(sv[k].STT, 3, ',');
+							f.getline(sv[k].MSSV, 15, ',');
+							f.getline(sv[k].Ten, 20, ',');
+							f.getline(sv[k].Ho, 20, ',');
+							f.getline(sv[k].Gioitinh, 5, ',');
+							f.getline(sv[k].Ngaysinh, 20, ',');
+							f.getline(sv[k].idXH, 50, '\n');
+							cout << left << setw(8) << sv[k].STT << left << setw(13) << sv[k].MSSV << left << setw(10) << sv[k].Ten << left << setw(20) << sv[k].Ho << left << setw(15) << sv[k].Gioitinh << left << setw(20) << sv[k].Ngaysinh << sv[k].idXH << endl;
+							cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						}
 						f.close();
 						delete[]sv;
 						break;
 					}
-				}
-				delete[]lop;
+				}delete[]lop;
 				break;
 			}
 		}
-		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;
-		cout << "1. Xem danh sach lop khac            2. Thoat" << endl;
-		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;
-		cout << "Nhap : ";
-		cin >> Chon;
-		if (Chon != 1 && Chon != 2) {
-			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<<endl;
-			cout << "Nhap lai : "; cin >> Chon;
-		}
-		delete[]nam;
-		if (Chon == 2) return;
+			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+			cout << "1. Xem danh sach lop khac            2. Thoat" << endl;
+			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+			cout << "Nhap : ";
+			cin >> Chon;
+			if (Chon != 1 && Chon != 2) {
+				cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+				cout << "Nhap lai : "; cin >> Chon;
+			}
+			delete[]nam;
+			if (Chon == 2) return;
 	}
-
 }
 
 void xemHKvsKH(fstream& f) {
@@ -271,7 +269,7 @@ void xemHKvsKH(fstream& f) {
 						dem++;
 						KhoaHoc* KHoc = new KhoaHoc[dem];
 						cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
-						cout << "----------------------------------------------" << endl;
+						cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						f.open(temp1, ios::in);
 						for (int k = 0; k < dem; k++) {
 							f.getline(KHoc[k].id, 10, ',');
@@ -283,7 +281,7 @@ void xemHKvsKH(fstream& f) {
 							f.getline(KHoc[k].Thu, 4, ',');
 							f.getline(KHoc[k].ses, 3, '\n');
 							cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(30) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
-							cout << "----------------------------------------------" << endl;
+							cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						}
 						f.close();
 						cout << "----------------------------------------------" << endl;
@@ -312,7 +310,7 @@ void xemHKvsKH(fstream& f) {
 								f.close();
 								DSSV* sv = new DSSV[dem];
 								cout << left << setw(8) << "STT" << left << setw(13) << "MSSV" << left << setw(10) << "Ho" << left << setw(20) << "Ten" << left << setw(15) << "Gioi tinh" << left << setw(20) << "Ngay sinh" << "ID Xa hoi" << endl;
-								cout << "----------------------------------------------" << endl;
+								cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 								f.open(temp1, ios::in);
 								for (int k = 0; k < dem; k++) {
 									f.getline(sv[k].STT, 3, ',');
@@ -323,7 +321,7 @@ void xemHKvsKH(fstream& f) {
 									f.getline(sv[k].Ngaysinh, 20, ',');
 									f.getline(sv[k].idXH, 20, '\n');
 									cout << left << setw(8) << sv[k].STT << left << setw(13) << sv[k].MSSV << left << setw(10) << sv[k].Ten << left << setw(20) << sv[k].Ho << left << setw(15) << sv[k].Gioitinh << left << setw(20) << sv[k].Ngaysinh << sv[k].idXH << endl;
-									cout << "----------------------------------------------" << endl;
+									cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 								}
 								f.close();
 								delete[]sv;

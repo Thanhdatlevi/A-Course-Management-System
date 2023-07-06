@@ -80,7 +80,7 @@ void nhapDiem(fstream& f) {// LAY DANH SACH SINH VIEN DE NHAP DIEM
 						f.close();
 						KhoaHoc* KHoc = new KhoaHoc[dem];
 						cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
-						cout << "----------------------------------------------" << endl;
+						cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						f.open(temp1, ios::in);
 						for (int k = 0; k < dem; k++) {
 							f.getline(KHoc[k].id, 10, ',');
@@ -92,7 +92,7 @@ void nhapDiem(fstream& f) {// LAY DANH SACH SINH VIEN DE NHAP DIEM
 							f.getline(KHoc[k].Thu, 4, ',');
 							f.getline(KHoc[k].ses, 3, '\n');
 							cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(30) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
-							cout << "----------------------------------------------" << endl;
+							cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						}
 						f.close();
 						cout << "----------------------------------------------" << endl;// CHON ID KHOA HOC DE NHAP DIEM
@@ -148,7 +148,7 @@ void nhapDiem(fstream& f) {// LAY DANH SACH SINH VIEN DE NHAP DIEM
 		}
 		delete[]nam;
 		cout << "----------------------------------------------" << endl;
-		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
+		cout << "1. Lay danh sach khac     2. Quay lai" << endl;
 		cout << "----------------------------------------------" << endl;
 		cout << "Nhap : "; cin >> Chon;
 		if (Chon == 2) return;
@@ -232,7 +232,7 @@ void themDiem(fstream& f) {// THEM FILE DIEM VAO HE THONG
 						f.close();
 						KhoaHoc* KHoc = new KhoaHoc[dem];
 						cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
-						cout << "----------------------------------------------" << endl;
+						cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						f.open(temp1, ios::in);
 						for (int k = 0; k < dem; k++) {
 							f.getline(KHoc[k].id, 10, ',');
@@ -244,7 +244,7 @@ void themDiem(fstream& f) {// THEM FILE DIEM VAO HE THONG
 							f.getline(KHoc[k].Thu, 4, ',');
 							f.getline(KHoc[k].ses, 3, '\n');
 							cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(30) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
-							cout << "----------------------------------------------" << endl;
+							cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						}
 						f.close();
 						cout << "----------------------------------------------" << endl;// CHON KHOA HOC THEM DIEM
@@ -383,7 +383,7 @@ void xemDiem1KH(fstream& f) {
 						f.close();
 						KhoaHoc* KHoc = new KhoaHoc[dem];
 						cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
-						cout << "----------------------------------------------" << endl;
+						cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						f.open(temp1, ios::in);
 						for (int k = 0; k < dem; k++) {
 							f.getline(KHoc[k].id, 10, ',');
@@ -395,7 +395,7 @@ void xemDiem1KH(fstream& f) {
 							f.getline(KHoc[k].Thu, 4, ',');
 							f.getline(KHoc[k].ses, 3, '\n');
 							cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(30) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
-							cout << "----------------------------------------------" << endl;
+							cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						}
 						f.close();
 						cout << "----------------------------------------------" << endl;// CHON KHOA HOC DE XEM DIEM
@@ -423,7 +423,7 @@ void xemDiem1KH(fstream& f) {
 								f.close();
 								DSSV* sv = new DSSV[dem];
 								cout << left << setw(8) << "STT" << left << setw(13) << "MSSV" << left << setw(30) << "Ten" << left << setw(12) << "Diem tong" << left << setw(12) << "Diem CK" << left << setw(12) << "Diem GK" << "Diem Khac" << endl;
-								cout << "----------------------------------------------" << endl;
+								cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 								f.open(temp1, ios::in);
 								for (int l = 0; l < dem; l++) {
 									f.getline(sv[l].STT, 3, ',');
@@ -434,7 +434,7 @@ void xemDiem1KH(fstream& f) {
 									f.getline(sv[l].midDiem, 3, ',');
 									f.getline(sv[l].otherDiem, 3, '\n');
 									cout << left << setw(8) << sv[l].STT << left << setw(13) << sv[l].MSSV << left << setw(30) << sv[l].Ho << left << setw(12) << sv[l].totalDiem << left << setw(12) << sv[l].finalDiem << left << setw(12) << sv[l].midDiem  << sv[l].otherDiem << endl;
-									cout << "----------------------------------------------" << endl;
+									cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 								}
 								f.close();
 								delete[]sv;
@@ -452,7 +452,7 @@ void xemDiem1KH(fstream& f) {
 		}
 		delete[]nam;
 		cout << "----------------------------------------------" << endl;
-		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
+		cout << "1. Xem diem khac     2. Quay lai" << endl;
 		cout << "----------------------------------------------" << endl;
 		cout << "Nhap : "; cin >> Chon;
 		if (Chon == 2) return;
@@ -543,7 +543,7 @@ void xemDiem1Lop(fstream& f) {
 						cin.getline(temp1, 50);
 						cout << "----------------------------------------------" << endl;
 						cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
-						cout << "----------------------------------------------" << endl;
+						cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						for (int k = 0; k < dem; k++) {
 							f.getline(KHoc[k].id, 10, ',');
 							f.getline(KHoc[k].TenKH, 30, ',');
@@ -556,7 +556,7 @@ void xemDiem1Lop(fstream& f) {
 							if (strcmp(temp1, KHoc[k].TenLop) == 0) {
 								dem1++;
 								cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(30) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
-								cout << "----------------------------------------------" << endl;
+								cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 							}
 						}
 						KhoaHoc* KHoc1 = new KhoaHoc[dem1];
@@ -592,7 +592,7 @@ void xemDiem1Lop(fstream& f) {
 								f.close();
 								DSSV* sv = new DSSV[dem];
 								cout << left << setw(8) << "STT" << left << setw(13) << "MSSV" << left << setw(30) << "Ten" << left << setw(12) << "Diem tong" << left << setw(12) << "Diem GPA" << endl;
-								cout << "----------------------------------------------" << endl;
+								cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 								f.open(temp1, ios::in);
 								for (int l = 0; l < dem; l++) {
 									f.getline(sv[l].STT, 3, ',');
@@ -602,12 +602,12 @@ void xemDiem1Lop(fstream& f) {
 									f.getline(sv[l].finalDiem, 3, ',');
 									f.getline(sv[l].midDiem, 3, ',');
 									f.getline(sv[l].otherDiem, 3, '\n');
-									cout << left << setw(8) << sv[l].STT << left << setw(13) << sv[l].MSSV << left << setw(30) << sv[l].Ho << left << setw(12) << sv[l].totalDiem << left << setw(12)<<fixed<<setprecision(2) << (long long)(stoi(sv[l].totalDiem) * 4 / 10) << endl;
-									cout << "----------------------------------------------" << endl;
-									S1+=(long long)(stoi(sv[l].totalDiem) * 4 / 10);
+									cout << left << setw(8) << sv[l].STT << left << setw(13) << sv[l].MSSV << left << setw(30) << sv[l].Ho << left << setw(12) << sv[l].totalDiem << left << setw(12)<<fixed<<setprecision(2) << (float)(stoi(sv[l].totalDiem) * 4 / 10) << endl;
+									cout << "----------------------------------------------------------------------------------------------------------------" << endl;
+									S1+=(float)(stoi(sv[l].totalDiem) * 4 / 10);
 								}
 								f.close();
-								cout << "GPA cua tong sinh vien : " <<fixed<<setprecision(2) << S1;
+								cout << "GPA cua tong sinh vien : " <<fixed<<setprecision(2) << S1<<endl;
 								delete[]sv;
 								break;
 							}
@@ -622,7 +622,7 @@ void xemDiem1Lop(fstream& f) {
 		}
 		delete[]nam;
 		cout << "----------------------------------------------" << endl;
-		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
+		cout << "1. Xem diem lop khac     2. Quay lai" << endl;
 		cout << "----------------------------------------------" << endl;
 		cout << "Nhap : "; cin >> Chon;
 		if (Chon == 2) return;
@@ -705,7 +705,7 @@ void capnhatDiem(fstream& f) {
 						f.close();
 						KhoaHoc* KHoc = new KhoaHoc[dem];
 						cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
-						cout << "----------------------------------------------" << endl;
+						cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						f.open(temp1, ios::in);
 						for (int k = 0; k < dem; k++) {
 							f.getline(KHoc[k].id, 10, ',');
@@ -717,7 +717,7 @@ void capnhatDiem(fstream& f) {
 							f.getline(KHoc[k].Thu, 4, ',');
 							f.getline(KHoc[k].ses, 3, '\n');
 							cout << left << setw(15) << KHoc[k].id << left << setw(30) << KHoc[k].TenKH << left << setw(10) << KHoc[k].TenLop << left << setw(30) << KHoc[k].TenGV << left << setw(10) << KHoc[k].STC << left << setw(8) << KHoc[k].MaxSV << left << setw(8) << KHoc[k].Thu << left << setw(7) << KHoc[k].ses << endl;
-							cout << "----------------------------------------------" << endl;
+							cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 						}
 						f.close();
 						cout << "----------------------------------------------" << endl;// NHAP ID KHOA HOC DE CA NHAT
@@ -745,7 +745,7 @@ void capnhatDiem(fstream& f) {
 								f.close();
 								DSSV* sv = new DSSV[dem];
 								cout << left << setw(8) << "STT" << left << setw(13) << "MSSV" << left << setw(30) << "Ten" << left << setw(12) << "Diem tong" << left << setw(12) << "Diem CK" << left << setw(12) << "Diem GK" << "Diem Khac" << endl;
-								cout << "----------------------------------------------" << endl;
+								cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 								f.open(temp1, ios::in);
 								for (int l = 0; l < dem; l++) {
 									f.getline(sv[l].STT, 3, ',');
@@ -756,7 +756,7 @@ void capnhatDiem(fstream& f) {
 									f.getline(sv[l].midDiem, 3, ',');
 									f.getline(sv[l].otherDiem, 3, '\n');
 									cout << left << setw(8) << sv[l].STT << left << setw(13) << sv[l].MSSV << left << setw(30) << sv[l].Ho << left << setw(12) << sv[l].totalDiem << left << setw(12) << sv[l].finalDiem << left << setw(12) << sv[l].midDiem << sv[l].otherDiem << endl;
-									cout << "----------------------------------------------" << endl;
+									cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 								}
 								f.close();
 								cout << "----------------------------------------------" << endl;
@@ -794,7 +794,7 @@ void capnhatDiem(fstream& f) {
 		}
 		delete[]nam;
 		cout << "----------------------------------------------" << endl;
-		cout << "1. Xem thoi khoa bieu khac     2. Quay lai" << endl;
+		cout << "1. Cap nhat diem sinh vien khac     2. Quay lai" << endl;
 		cout << "----------------------------------------------" << endl;
 		cout << "Nhap : "; cin >> Chon;
 		if (Chon == 2) return;

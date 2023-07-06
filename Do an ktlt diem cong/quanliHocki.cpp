@@ -3,11 +3,8 @@
 void addKH(char HK[]) {// THEM KHOA HOC VAO HOC KI
 	system("cls");
 	fstream f;
+	int dem = 0;
 	char temp1[100];
-	strcpy_s(temp1, strlen(HK) + 1, HK);
-	strcat_s(temp1, "\\");
-	strcat_s(temp1, "DSKH.csv");
-	f.open(temp1, ios::out);
 	KhoaHoc KHoc;
 	while (1) {
 		cin.ignore();
@@ -27,13 +24,37 @@ void addKH(char HK[]) {// THEM KHOA HOC VAO HOC KI
 		cin.getline(KHoc.Thu, 4);
 		cout << "Tiet : ";
 		cin.getline(KHoc.ses, 3);
-		f << KHoc.id << "," << KHoc.TenKH << "," << KHoc.TenLop << "," << KHoc.TenGV << "," << KHoc.STC << "," << KHoc.MaxSV << "," << KHoc.Thu << "," << KHoc.ses << endl;// Lay 
+		strcpy_s(temp1, strlen(HK) + 1, HK);
+		strcat_s(temp1, "\\");
+		strcat_s(temp1, "DSKH.csv");
+		dem = 0;
+		f.open(temp1, ios::in);
+		demDong(f, dem);
+		f.close();
+		KhoaHoc* KHoc1 = new KhoaHoc[dem];
+		f.open(temp1, ios::in);
+		for (int i = 0; i < dem; i++) {
+			f.getline(KHoc1[i].id, 10, ',');
+			f.getline(KHoc1[i].TenKH, 30, ',');
+			f.getline(KHoc1[i].TenLop, 30, ',');
+			f.getline(KHoc1[i].TenGV, 50, ',');
+			f.getline(KHoc1[i].STC, 5, ',');
+			f.getline(KHoc1[i].MaxSV, 4, ',');
+			f.getline(KHoc1[i].Thu, 4, ',');
+			f.getline(KHoc1[i].ses, 3, '\n');
+			}
+		f.close();
+		f.open(temp1, ios::out);
+		for (int i = 0; i < dem; i++) {
+			f << KHoc1[i].id << "," << KHoc1[i].TenKH << "," << KHoc1[i].TenLop << "," << KHoc1[i].TenGV << "," << KHoc1[i].STC << "," << KHoc1[i].MaxSV << "," << KHoc1[i].Thu << "," << KHoc1[i].ses << endl;
+		}f << KHoc.id << "," << KHoc.TenKH << "," << KHoc.TenLop << "," << KHoc.TenGV << "," << KHoc.STC << "," << KHoc.MaxSV << "," << KHoc.Thu << "," << KHoc.ses << endl;
+		f.close();
 		fstream f1;
 		cout << "----------------------------------------------" << endl;
 		cout << "Nhap dia chi file DS Sinh Vien : ";// THEM FILE DS SINH VIEN CO SAN VAO TRONG KHOA HOC 
 		char temp[100];
 		cin.getline(temp, 100);
-		int dem = 0;
+		dem = 0;
 		f1.open(temp, ios::in);
 		while (f1.is_open() == 0) {
 			cout << "Ten file khong ton tai, vui long nhap lai. " << endl;
@@ -75,11 +96,9 @@ void addKH(char HK[]) {// THEM KHOA HOC VAO HOC KI
 		int Chon;
 		cout << "Nhap : "; cin >> Chon;
 		if (Chon == 2) {
-			f.close();
 			return;
 		}
 	}
-	f.close();
 }
 
 void tao1HK(fstream& f,char temp[]) {
@@ -174,6 +193,10 @@ Chonlai:
 			strcat_s(temp1, hk.HKthu);
 			_mkdir(temp1); // TAO THU MUC CHUA DANH SACH KHOA HOC
 			strcpy_s(temp, strlen(temp1) + 1, temp1);
+			strcat_s(temp1, "\\");
+			strcat_s(temp1, "DSKH.csv");
+			f.open(temp1, ios::out);
+			f.close();
 			break;
 		}
 	}
@@ -228,7 +251,7 @@ void listKH(char HK[]) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 			f.close();
 			DSSV* sv = new DSSV[dem];
 			cout << left << setw(8) << "STT" << left << setw(13) << "MSSV" << left << setw(10) << "Ho" << left << setw(20) << "Ten" << left << setw(15) << "Gioi tinh" << left << setw(20) << "Ngay sinh" << "ID Xa hoi" << endl;
-			cout << "----------------------------------------------" << endl;
+			cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 			f.open(temp1, ios::in);
 			for (int k = 0; k < dem; k++) {
 				f.getline(sv[k].STT, 3, ',');
@@ -239,7 +262,7 @@ void listKH(char HK[]) {// XEM DANH SACH KHOA HOC TRONG HOC KI HIEN TAI
 				f.getline(sv[k].Ngaysinh, 20, ',');
 				f.getline(sv[k].idXH, 20, '\n');
 				cout << left << setw(8) << sv[k].STT << left << setw(13) << sv[k].MSSV << left << setw(10) << sv[k].Ten << left << setw(20) << sv[k].Ho << left << setw(15) << sv[k].Gioitinh << left << setw(20) << sv[k].Ngaysinh << sv[k].idXH << endl;
-				cout << "----------------------------------------------" << endl;
+				cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 			}
 			f.close();
 			delete[]sv;
@@ -261,7 +284,7 @@ void updateKH(char HK[]) {
 	dem++;
 	KhoaHoc* KHoc = new KhoaHoc[dem];
 	cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
-	cout << "----------------------------------------------" << endl;
+	cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	f.open(temp, ios::in);
 	for (int i = 0; i < dem; i++) {
 		f.getline(KHoc[i].id, 10, ',');
@@ -273,7 +296,7 @@ void updateKH(char HK[]) {
 		f.getline(KHoc[i].Thu, 4, ',');
 		f.getline(KHoc[i].ses, 3, '\n');
 		cout << left << setw(15) << KHoc[i].id << left << setw(30) << KHoc[i].TenKH << left << setw(10) << KHoc[i].TenLop << left << setw(30) << KHoc[i].TenGV << left << setw(10) << KHoc[i].STC << left << setw(8) << KHoc[i].MaxSV << left << setw(8) << KHoc[i].Thu << left << setw(7) << KHoc[i].ses << endl;
-		cout << "----------------------------------------------" << endl;
+		cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	}
 	f.close();
 	char temp1[100];
@@ -339,6 +362,7 @@ void add1SV(char HK[]) {
 	cout << "Nhap id xa hoi sinh vien : ";
 	cin.getline(sv1.idXH, 20);
 	cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
+	cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	f.open(temp1, ios::in);
 	for (int i = 0; i < dem; i++) {
 		f.getline(KHoc[i].id, 10, ',');
@@ -350,6 +374,7 @@ void add1SV(char HK[]) {
 		f.getline(KHoc[i].Thu, 4, ',');
 		f.getline(KHoc[i].ses, 3, '\n');
 		cout << left << setw(15) << KHoc[i].id << left << setw(30) << KHoc[i].TenKH << left << setw(10) << KHoc[i].TenLop << left << setw(30) << KHoc[i].TenGV << left << setw(10) << KHoc[i].STC << left << setw(8) << KHoc[i].MaxSV << left << setw(8) << KHoc[i].Thu << left << setw(7) << KHoc[i].ses << endl;
+		cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	}
 	f.close();
 	cout << "----------------------------------------------" << endl;
@@ -407,7 +432,7 @@ void delete1SV(char HK[]) {
 	f.close();
 	KhoaHoc* KHoc = new KhoaHoc[dem];
 	cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
-	cout << "----------------------------------------------" << endl;
+	cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	f.open(temp1, ios::in);
 	for (int i = 0; i < dem; i++) {
 		f.getline(KHoc[i].id, 10, ',');
@@ -419,7 +444,7 @@ void delete1SV(char HK[]) {
 		f.getline(KHoc[i].Thu, 4, ',');
 		f.getline(KHoc[i].ses, 3, '\n');
 		cout << left << setw(15) << KHoc[i].id << left << setw(30) << KHoc[i].TenKH << left << setw(10) << KHoc[i].TenLop << left << setw(30) << KHoc[i].TenGV << left << setw(10) << KHoc[i].STC << left << setw(8) << KHoc[i].MaxSV << left << setw(8) << KHoc[i].Thu << left << setw(7) << KHoc[i].ses << endl;
-		cout << "----------------------------------------------" << endl;
+		cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	}
 	f.close();
 	cout << "----------------------------------------------" << endl;
@@ -441,7 +466,7 @@ void delete1SV(char HK[]) {
 			f.close();
 			DSSV* sv = new DSSV[dem];
 			cout << left << setw(8) << "STT" << left << setw(13) << "MSSV" << left << setw(10) << "Ho" << left << setw(20) << "Ten" << left << setw(15) << "Gioi tinh" << left << setw(20) << "Ngay sinh" << "ID Xa hoi" << endl;
-			cout << "----------------------------------------------" << endl;
+			cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 			f.open(temp1, ios::in);
 			for (int j = 0; j < dem; j++) {
 				f.getline(sv[j].STT, 3, ',');
@@ -452,7 +477,7 @@ void delete1SV(char HK[]) {
 				f.getline(sv[j].Ngaysinh, 20, ',');
 				f.getline(sv[j].idXH, 20, '\n');
 				cout << left << setw(8) << sv[j].STT << left << setw(13) << sv[j].MSSV << left << setw(10) << sv[j].Ten << left << setw(20) << sv[j].Ho << left << setw(15) << sv[j].Gioitinh << left << setw(20) << sv[j].Ngaysinh << sv[j].idXH << endl;
-				cout << "----------------------------------------------" << endl;
+				cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 			}
 			f.close();
 			cout << "----------------------------------------------" << endl;
@@ -491,7 +516,7 @@ void delete1Course(char HK[]) {
 	f.close();
 	KhoaHoc* KHoc = new KhoaHoc[dem];
 	cout << left << setw(15) << "ID mon hoc" << left << setw(30) << "Khoa hoc" << left << setw(10) << "Lop" << left << setw(30) << "Giao vien" << left << setw(10) << "So TC" << left << setw(8) << "So SV" << left << setw(8) << "Thu" << left << setw(7) << "Tiet" << endl;
-	cout << "----------------------------------------------" << endl;
+	cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	f.open(temp1, ios::in);
 	for (int i = 0; i < dem; i++) {
 		f.getline(KHoc[i].id, 10, ',');
@@ -503,7 +528,7 @@ void delete1Course(char HK[]) {
 		f.getline(KHoc[i].Thu, 4, ',');
 		f.getline(KHoc[i].ses, 3, '\n');
 		cout << left << setw(15) << KHoc[i].id << left << setw(30) << KHoc[i].TenKH << left << setw(10) << KHoc[i].TenLop << left << setw(30) << KHoc[i].TenGV << left << setw(10) << KHoc[i].STC << left << setw(8) << KHoc[i].MaxSV << left << setw(8) << KHoc[i].Thu << left << setw(7) << KHoc[i].ses << endl;
-		cout << "----------------------------------------------" << endl;
+		cout << "----------------------------------------------------------------------------------------------------------------" << endl;
 	}
 	f.close();
 	cout << "----------------------------------------------" << endl;
